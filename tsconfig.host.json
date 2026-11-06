@@ -410,6 +410,7 @@
     { "path": "./packages/session/session-title" },
     { "path": "./packages/session/working-directory" },
     { "path": "./packages/experimental/worktree" },
+    { "path": "./packages/experimental/evolve" },
     { "path": "./packages/experimental/tool-worktree" },
     { "path": "./packages/experimental/forge" },
     { "path": "./packages/experimental/forge-github" },

@@ -1,0 +1,55 @@
+# Bilingual-pair consistency record for README.md (docs/i18n/README.md): per heading
+# section, a hash of its English and Chinese blocks outside code blocks and generated regions.
+# After editing either side, bring the other along and re-record with:
+#   pnpm run verify-translation-pairing --write packages/experimental/evolve/README.md
+/:
+  en: fcdbe7deeb3182f9
+  zh: 83ae3469aecfc11d
+/deepseek-ai-dsh-evolve:
+  en: 30df2bd390bd5e21
+  zh: 1fc688842ed1bbcf
+/deepseek-ai-dsh-evolve/summary:
+  en: b9e715e8262a0053
+  zh: 6f2341a8ac42093b
+/deepseek-ai-dsh-evolve/table-of-contents:
+  en: b563e4ec4727d0de
+  zh: 26c01be6f3c34831
+/deepseek-ai-dsh-evolve/use-this-package:
+  en: d03d091e810585c0
+  zh: daf806468107944d
+/deepseek-ai-dsh-evolve/understand-the-implementation:
+  en: c6e9e23365fd9241
+  zh: 63b41e1128f59d69
+/deepseek-ai-dsh-evolve/further-exploration:
+  en: fbf177175506efb0
+  zh: 2319fab7fb134db0
+/deepseek-ai-dsh-evolve/model-experience:
+  en: 215e7ba838619b7b
+  zh: 215e7ba838619b7b
+/deepseek-ai-dsh-evolve/model-experience/tool-surface:
+  en: 49718b52299d222b
+  zh: 3bc5c1f82082b6eb
+/deepseek-ai-dsh-evolve/model-experience/tool-surface/what-the-model-sees:
+  en: fb1202640fc31bd0
+  zh: 09f56ac8b80498c3
+/deepseek-ai-dsh-evolve/model-experience/tool-surface/token-effect:
+  en: 21d05e8906ac17e2
+  zh: f31fd58ed5840d72
+/deepseek-ai-dsh-evolve/model-experience/tool-surface/kv-cache-effect:
+  en: 671973498b017e59
+  zh: 8507253329525418
+/deepseek-ai-dsh-evolve/model-experience/tool-results:
+  en: beaabb79f229692a
+  zh: 8573891441963be4
+/deepseek-ai-dsh-evolve/model-experience/tool-results/what-the-model-sees:
+  en: 1de2735117227b71
+  zh: 6bb7893742e197b6
+/deepseek-ai-dsh-evolve/model-experience/tool-results/token-effect:
+  en: 6d5080283d5b15f7
+  zh: 71314443e9e814dd
+/deepseek-ai-dsh-evolve/model-experience/tool-results/kv-cache-effect:
+  en: 3a0917f08811a539
+  zh: 0b8a6c0bbe6ca325
+/deepseek-ai-dsh-evolve/known-limitations-and-deferred-work:
+  en: 98953aa410e39894
+  zh: f4cf56e562317c39
