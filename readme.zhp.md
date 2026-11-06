@@ -12,6 +12,7 @@
 
 | 文档 | 主题 |
 |---|---|
+| [zhp/AGENTS.md](./zhp/AGENTS.md) | 协作约定：学习目标、合作方式、进度锚点 |
 | [zhp/00-conclusions.md](./zhp/00-conclusions.md) | 六条结论摘要（带证据强度） |
 | [zhp/01-architecture.md](./zhp/01-architecture.md) | 七层架构总览 |
 | [zhp/02-request-lifecycle.md](./zhp/02-request-lifecycle.md) | 一次提问到回复的完整链路 |
