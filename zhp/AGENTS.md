@@ -18,7 +18,7 @@
 - 代码引用写成链接：聊天用 `packages/x.ts#L283`，文档用相对路径 `../packages/x.ts#L283`；不确定行号就只写文件名。
 - 注意：文档预览不解析本地链接（见 `05`），链接只在聊天和 GitHub 上可点。
 - 每篇结尾留"还没搞懂"，下次从那里接着挖。
-- **自动提交**：文档改动完成后直接 `git commit`（`docs(zhp): ...`），不询问。只提交自己改的文件；不碰 `packages/experimental/evolve/` 等在途改动；只 commit 不 push。
+- **自动提交**：文档改动完成后直接 `git commit`（`docs(zhp): ...`），不询问。只提交自己改的文件；不碰 `packages/experimental/evolve/` 等在途改动；commit 自动；push 只在明确要求时（如“push all”）。
 
 ## 进度锚点
 
