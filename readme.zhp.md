@@ -21,6 +21,7 @@
 | [zhp/05-workspace-conventions.md](./zhp/05-workspace-conventions.md) | 工作区与引用约定 |
 | [zhp/06-session-and-resume.md](./zhp/06-session-and-resume.md) | 会话与恢复：补账而非续跑 |
 | [zhp/07-startup.md](./zhp/07-startup.md) | 启动流程：空根 + 补丁层 |
+| [zhp/08-repo-layout.md](./zhp/08-repo-layout.md) | 仓库地图：包 / bundle / profile |
 | [zhp/README.md](./zhp/README.md) | 目录说明与阅读顺序 |
 
 ## 三条最值得记住的结论
