@@ -11,6 +11,7 @@
 | [03-sandbox-and-permissions.md](./03-sandbox-and-permissions.md) | 沙箱实测 | 读写边界、setuid、SBPL、三平台对比 |
 | [04-self-evolving-agent.md](./04-self-evolving-agent.md) | 自改设计草案 | supervisor、事务式修改、评测外置 |
 | [05-workspace-conventions.md](./05-workspace-conventions.md) | 工作区约定 | 链接语法、沙箱事实、引用纪律 |
+| [06-session-and-resume.md](./06-session-and-resume.md) | 会话与恢复 | 补账而非续跑，turn 边界是安全重启点 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
