@@ -17,6 +17,7 @@
 | [zhp/02-request-lifecycle.md](./zhp/02-request-lifecycle.md) | 一次提问到回复的完整链路 |
 | [zhp/03-sandbox-and-permissions.md](./zhp/03-sandbox-and-permissions.md) | 沙箱与权限的实测边界 |
 | [zhp/04-self-evolving-agent.md](./zhp/04-self-evolving-agent.md) | 自省自改 agent 设计草案 |
+| [zhp/05-workspace-conventions.md](./zhp/05-workspace-conventions.md) | 工作区与引用约定 |
 | [zhp/README.md](./zhp/README.md) | 目录说明与阅读顺序 |
 
 ## 三条最值得记住的结论
