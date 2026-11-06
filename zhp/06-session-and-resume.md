@@ -15,7 +15,7 @@
 
 ## 1. 日志里有什么
 
-一个 session 是一条只能追加的事件流，事件带 `seq` 与 `time`（[types.ts:287](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/core/session/src/types.ts) 附近）。
+一个 session 是一条只能追加的事件流，事件带 `seq` 与 `time`（[types.ts:287](../packages/core/session/src/types.ts#L287) 附近）。
 
 | 事件 | 记什么 |
 |---|---|
@@ -41,7 +41,7 @@
 
 ## 3. 补账的步骤
 
-恢复路径（agent-loop 的 resume）：
+恢复路径（[agent-loop/index.ts:791](../packages/core/agent-loop/src/index.ts#L791) 的 resume）：
 
 ```
 拿写锁 open(id, 'write')
@@ -51,7 +51,7 @@
   → 用「原日志 + 合成事件」重建 Session
 ```
 
-`interruptedTurnClosers` 做四件事：
+`interruptedTurnClosers`（[repair.ts:56](../packages/core/session/src/repair.ts#L56)）做四件事：
 
 1. 顺序扫描，维护 `openTurn` / `openStep` 游标，遇到闭合事件就清空；
 2. `openTurn === null` 说明日志已平衡，**什么都不做**；
@@ -77,7 +77,7 @@
 | 语义 | 崩溃恢复 | 从某点分叉 |
 | 边界记录 | — | `inheritedEventCount` |
 
-同一个 `openTurnClosers` 机制，两套叙事：fork 的合成结果说的是"父会话可能在 fork 点之后完成了它"，而不是"崩溃了"。机制复用，语义按场景定制。
+同一个 `openTurnClosers` 机制（[fork.ts:22](../packages/core/session/src/fork.ts#L22)），两套叙事：fork 的合成结果说的是"父会话可能在 fork 点之后完成了它"，而不是"崩溃了"。机制复用，语义按场景定制。
 
 ## 6. 对"重启"的意义
 

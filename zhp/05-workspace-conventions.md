@@ -21,6 +21,20 @@ GUI 的本地文件链接**只认裸路径**。判据在 `packages/client/ui-pri
 
 交付物（图片、文档）用 `present` 工具给文件卡，不要把裸路径当唯一入口。
 
+### 补充：两种渲染场景不同（2026-11-06 实测 + 源码）
+
+- **聊天消息**：`ChatView` 提供了 `openFile`，链接按会话工作目录解析，`./x`、`x`、`../x` 都能点开。
+- **侧边栏文档预览**：`ui-sidebar-documentpreview` 没有 `MarkdownDelegateProvider`，`openFile` 缺失，文件链接会退化成纯文本（[render.tsx:633](../../packages/client/ui-primitives/src/markdown/render.tsx#L633)）。写在 `.md` 里的本地链接**在应用内点不了**，只有在 GitHub 等支持相对链接的地方才能点。
+
+写法约定：
+
+| 场景 | 写法 |
+|---|---|
+| 聊天回复 | `[文件](packages/core/session/src/types.ts#L287)` 或 `./...` |
+| 仓库内文档 | 相对文档目录：`[types.ts](../packages/core/session/src/types.ts#L287)` |
+
+行号统一用 `#L12` 或 `#L12-L30`，冒号写法只适合聊天。
+
 ## 2. 沙箱边界（2026-11-06 实测）
 
 ### 读
