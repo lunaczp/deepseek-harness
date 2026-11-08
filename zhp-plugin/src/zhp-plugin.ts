@@ -2,17 +2,22 @@ import { appendFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import type { Context } from '@deepseek-ai/cordis'
-import { isAgentLoopRequest } from '@deepseek-ai/dsh-llm'
+import { BlockAssembler, isAgentLoopRequest } from '@deepseek-ai/dsh-llm'
 import { defineTool } from '@deepseek-ai/dsh-tools'
 
 export const name = 'zhp-plugin'
 export const inject = ['tools']
 
 const logPath = join(dirname(fileURLToPath(import.meta.url)), '..', 'logs', 'llm-prompt.log')
+let nextCallId = 0
+
+function writeLog(payload: Record<string, unknown>): void {
+  appendFileSync(logPath, `${JSON.stringify(payload)}\n`)
+}
 
 export function apply(ctx: Context) {
   mkdirSync(dirname(logPath), { recursive: true })
-  console.log(`[zhp-plugin] llm prompt dumps → ${logPath}`)
+  console.log(`[zhp-plugin] llm dumps → ${logPath}`)
 
   ctx.tools.register(defineTool({
     name: 'greet',
@@ -29,9 +34,12 @@ export function apply(ctx: Context) {
     },
   }))
 
-  // Dump the exact GenerateOptions the adapter is about to see (messages + tools).
+  // Dump request options, then wrap the stream to dump the assembled result.
   ctx.on('llm/stream', (options, next) => {
-    const payload = {
+    const callId = ++nextCallId
+    writeLog({
+      kind: 'request',
+      callId,
       at: new Date().toISOString(),
       agentLoop: isAgentLoopRequest(options),
       provider: options.provider,
@@ -44,9 +52,41 @@ export function apply(ctx: Context) {
       system: options.system,
       messages: options.messages,
       tools: options.tools,
-    }
-    appendFileSync(logPath, `${JSON.stringify(payload)}\n`)
-    console.log(`[zhp-plugin] wrote prompt dump (${payload.messages.length} messages, ${payload.tools?.length ?? 0} tools) → ${logPath}`)
-    return next()
+    })
+    console.log(`[zhp-plugin] request #${callId} (${options.messages.length} messages, ${options.tools?.length ?? 0} tools) → ${logPath}`)
+
+    const inner = next()
+    return (async function* () {
+      const assembler = new BlockAssembler()
+      try {
+        for await (const chunk of inner) {
+          assembler.push(chunk)
+          yield chunk
+        }
+        writeLog({
+          kind: 'result',
+          callId,
+          at: new Date().toISOString(),
+          provider: options.provider,
+          model: options.model,
+          finish: assembler.finish,
+          usage: assembler.usage,
+          content: assembler.blocks(),
+        })
+        console.log(`[zhp-plugin] result #${callId} (${assembler.blocks().length} blocks, finish=${assembler.finish.kind}) → ${logPath}`)
+      } catch (error) {
+        writeLog({
+          kind: 'error',
+          callId,
+          at: new Date().toISOString(),
+          provider: options.provider,
+          model: options.model,
+          error: error instanceof Error ? { name: error.name, message: error.message } : String(error),
+          content: assembler.interruptedBlocks(),
+        })
+        console.log(`[zhp-plugin] error #${callId} → ${logPath}`)
+        throw error
+      }
+    })()
   })
 }
