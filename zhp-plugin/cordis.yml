@@ -1,0 +1,3 @@
+- insert:
+    - id: zhp-plugin
+      name: '/Users/lux/Github/lunaczp/deepseek-harness/zhp-plugin/src/zhp-plugin.ts'
