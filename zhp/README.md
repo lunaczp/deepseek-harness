@@ -14,12 +14,14 @@
 | [06-session-and-resume.md](./06-session-and-resume.md) | 会话与恢复 | 补账而非续跑，turn 边界是安全重启点 |
 | [07-startup.md](./07-startup.md) | 启动流程 | 空根 + 补丁层，Loader 拼出插件树 |
 | [08-repo-layout.md](./08-repo-layout.md) | 仓库地图 | 包 → bundle → profile 三层组合 |
+| [09-cli-headless-flow.md](./09-cli-headless-flow.md) | CLI / headless | 一次 task 启动到 stdout，共享 agent-loop |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
 
 想快速了解结论 → 读 `00`。
 想知道 agent 怎么运转 → `01` + `02`。
+想知道 CLI 一次提问怎么跑 → `09`（对照 `07` 的 web 启动）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
