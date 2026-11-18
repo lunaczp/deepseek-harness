@@ -136,6 +136,8 @@ sequenceDiagram
 
 学 DSH 启动时：先建立本文的 Loader/Entry 心智，再叠 [07](./07-startup.md) 的补丁栈。
 
+文件级对照与行数：[11-dsh-vs-cordis-boot-files.md](./11-dsh-vs-cordis-boot-files.md)。
+
 ## 还没搞懂
 
 1. Include 的 **journal / patch**（insert、override、disable）与 DSH 多层 `cordis.patch.yml` 如何对齐——部分与 [07](./07-startup.md) 待办重复。

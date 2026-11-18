@@ -24,6 +24,7 @@
 | [zhp/08-repo-layout.md](./zhp/08-repo-layout.md) | 仓库地图：包 / bundle / profile |
 | [zhp/09-cli-headless-flow.md](./zhp/09-cli-headless-flow.md) | CLI / headless：一次 task 到 stdout |
 | [zhp/10-cordis-boot-loader.md](./zhp/10-cordis-boot-loader.md) | Cordis 最小启动：bin.js → Loader → Include |
+| [zhp/11-dsh-vs-cordis-boot-files.md](./zhp/11-dsh-vs-cordis-boot-files.md) | DSH vs Cordis：启动文件与行数对照 |
 | [zhp/README.md](./zhp/README.md) | 目录说明与阅读顺序 |
 
 ## 三条最值得记住的结论
