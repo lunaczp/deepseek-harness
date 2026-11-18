@@ -12,6 +12,13 @@ if [[ -z "$ROOT" ]]; then
 fi
 cd "$ROOT"
 
+# Prefer Node >=24 so lefthook pre-push (pnpm) can run.
+if [[ -s "${NVM_DIR:-$HOME/.nvm}/nvm.sh" ]]; then
+  # shellcheck disable=SC1091
+  . "${NVM_DIR:-$HOME/.nvm}/nvm.sh"
+  nvm use 24 >/dev/null 2>&1 || nvm use --lts >/dev/null 2>&1 || true
+fi
+
 if [[ -d .git/rebase-merge || -d .git/rebase-apply || -f .git/MERGE_HEAD ]]; then
   exit 0
 fi
