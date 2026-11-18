@@ -91,3 +91,7 @@
 2. **`PluginPackages` 与 runtime resolution**：为什么不用普通 workspace 依赖解析？
 3. **HMR 在启动时的边界**：哪些行能热替换、哪些必须重启。
 4. **`window.__DSH_BOOT__`**：client-modules 如何扫描与注入。
+
+## 相关
+
+- Cordis 官方 CLI 的 Loader/Include 最小链：[10-cordis-boot-loader.md](./10-cordis-boot-loader.md)。
