@@ -85,7 +85,7 @@
 
 ## 还没搞懂
 
-1. **surface 投影**：日志事件怎么变成发给模型的 `messages`？`SurfaceOp` 的 `append` / `replace` 解决什么问题？
-2. **system prompt 恢复**：`system/message` 是 surface 的 0 号节点，resume 时怎么重放？
-3. **compaction**：压缩后日志怎么写？恢复读压缩前还是压缩后的段？
-4. **`request/header`**：为什么每次请求落完整快照，而不是只记变化？
+1. **surface 投影**：概览已记入 [12](./12-session-implementation.md)（`append` / `replace`、`deriveMessages`）；细粒度缓存失效与 plugin projection 生命周期仍待挖。
+2. **system prompt 恢复**：`system/message` 是 surface 的 0 号节点；调和 / normalize / 空节点规则见 [12 还没搞懂 #1](./12-session-implementation.md#还没搞懂)。
+3. **compaction**：压缩后日志怎么写？恢复读压缩前还是压缩后的段？（12 只确认 replace 遮挡不删原事件）
+4. **`request/header`**：完整快照 + `foldRequestHeader` 取最新，见 [12 §3](./12-session-implementation.md#3-事件词汇)；「为何不全量 diff」的产品取舍仍可再挖。

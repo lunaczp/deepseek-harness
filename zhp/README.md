@@ -17,6 +17,7 @@
 | [09-cli-headless-flow.md](./09-cli-headless-flow.md) | CLI / headless | 一次 task 启动到 stdout，共享 agent-loop |
 | [10-cordis-boot-loader.md](./10-cordis-boot-loader.md) | Cordis 最小启动 | bin.js → Loader → Include → registry.plugin |
 | [11-dsh-vs-cordis-boot-files.md](./11-dsh-vs-cordis-boot-files.md) | DSH vs Cordis 文件表 | 启动相关路径与 `wc -l` 体量对照 |
+| [12-session-implementation.md](./12-session-implementation.md) | Session 实现 | 事件日志 / Surface / 问答 trace |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -26,6 +27,7 @@
 想知道 CLI 一次提问怎么跑 → `09`（对照 `07` 的 web 启动）。
 想弄清 Cordis / Loader 最小启动链 → `10`（再读 `07` 的 DSH 补丁栈）。
 想对照 DSH/Cordis 启动文件体量 → `11`。
+想弄清 Session 日志与一次问答落事件 → `12`（恢复语义对照 `06`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
