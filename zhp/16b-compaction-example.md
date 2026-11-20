@@ -46,28 +46,55 @@ compactIfNeeded(agent, 'pressure', signal)
 
 ---
 
-## ② 可选 prune（仍无摘要）
+## ② 可选 prune（仍无摘要；不调模型）
 
 若挂了 `toolResultPruner` 且已超阈值：
 
 ```text
-pruneSession(session)     # 改写超大 tool/result 内容（有日志事件，见 pruner 包）
+pruneSession(session)     # 改写超大 tool/result 内容
 measure(...) 再量一次
 若已 < threshold → 跳过摘要，本轮压缩结束
 ```
 
----
-
-## ③ 选范围
-
-从**第一个非 system（非节点 0）**起，选最旧且工具配对平衡的区间，尾部留 retain：
+效果举例（默认阈值 8192 / head 4096 / tail 1024）：
 
 ```text
-shadowedSeqs = [s_a, s_b, …, s_z]   # 将要被 replace 的 surface 节点
-retain 尾巴不动
+# 某条 bash 输出约 2 万字 → 模型之后只看到
+[前 4096 字符]
+\n\n[... tool result middle pruned ...]\n\n
+[后 1024 字符]
 ```
 
-配对：不能切开未完成的 tool_call / tool_result（[`tool-pairing`](../packages/compaction/compaction/src/tool-pairing.ts)）。
+短结果不动；原文仍在日志（`compaction/prune` + 新 `tool/result` replace）。**整次压缩可以只 prune、不调摘要模型。**
+
+---
+
+## ③ 选范围（retain = token 预算，不是「最近 N 条」）
+
+从**第一个非 system（非节点 0）**起选将被遮区间；尾巴按 `retainTokens` 从末尾往前累加：
+
+```text
+retainTokens ≈ floor((W−O)×0.16)   # 或配置绝对 retainTokens
+从 surface 末尾往前累加 node.tokens，直到 ≥ retainTokens
+再调整切点使工具对平衡 → 实际留下常 ≥ retainTokens
+
+shadowedSeqs = [s_a, …, s_z]   # 较早段：进摘要请求，随后 replace
+retain 尾巴不动                 # 不进摘要 call 的被压区间
+```
+
+示意：
+
+```text
+[0] system                        不进压缩区
+[1]…[K] 较早多轮                  shadowed → 摘要模型
+---------- retain 切点 ----------
+[K+1]…[N] 近期（凑够 retainTokens） 原样保留
+```
+
+- 近期都短 → 可能留很多条；最近一条超长 → 可能只留 1～2 条
+- **「几」= 约等于「最新往回至少保留的原文大小（token）」**，不是固定条数
+
+配对：不能切开未完成的 tool_call / tool_result（[`tool-pairing`](../packages/compaction/compaction/src/tool-pairing.ts)）。详情见 [16 §6](./16-compaction.md)。
 
 ---
 
