@@ -22,6 +22,8 @@
 | [13b-dsh-llm.md](./13b-dsh-llm.md) | dsh-llm 深读 | 词汇 / 注册表 / prepareCall / 投影 / 失败边界 |
 | [14-prompt-assembly.md](./14-prompt-assembly.md) | 提示词组装 | assemble / renderPrompt / system vs runtime-context |
 | [14b-prompt-assembly-example.md](./14b-prompt-assembly-example.md) | 组装示例 | 用户 Hello 逐步字符串 |
+| [15-token-meter.md](./15-token-meter.md) | Token 计量 | `measure` / 启发式 / 投影 / 与压缩 |
+| [15b-token-meter-example.md](./15b-token-meter-example.md) | 计量示例 | 接 14b Hello 的启发式推算 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -35,6 +37,7 @@
 想弄清模型调用与适配器 → `13`（对照 `02` 的⑤⑥与 `12` 的 request/assistant 事件）。
 想深读核心包 `@deepseek-ai/dsh-llm` → `13b`（先扫 `13` 包地图）。
 想弄清请求前提示词怎么拼 → `14`；要逐步字符串例子 → `14b`。
+想弄清 token / 上下文压力怎么估 → `15`；要接 Hello 表面的数字推算 → `15b`。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

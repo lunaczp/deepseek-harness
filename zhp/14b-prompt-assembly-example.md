@@ -13,7 +13,7 @@
 
 **刻意缩小的首轮：`assemble` 里仍是碎段与 `{{model}}`；`renderPrompt` 得到整段 system（无 cwd）；cwd 在独立的 runtime-context user 快照里；用户 `Hello` 再一条 user——三者经 `deriveMessages()` 进 LLM。**（源码）
 
-关联：[14 组装机制](./14-prompt-assembly.md)；[12](./12-session-implementation.md)。产品全量 profile 只是 system 中间多出大量 `tool:*` 段，信封相同。
+关联：[14 组装机制](./14-prompt-assembly.md)；[15b 计量推算](./15b-token-meter-example.md)（对本篇表面做启发式计数）；[12](./12-session-implementation.md)。产品全量 profile 只是 system 中间多出大量 `tool:*` 段，信封相同。
 
 ---
 
