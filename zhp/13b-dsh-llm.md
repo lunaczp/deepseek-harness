@@ -284,6 +284,23 @@ Assistant：loop 用 `AssistantStreamAccumulator` 压流，写入 `assistant/mes
 
 （与 [13 还没搞懂](./13-llm-implementation.md#还没搞懂) 互补：13 偏组级与 DeepSeek 路由；本篇偏核心服务边界。）
 
+## 跳转锚点（流程关键行）
+
+按一次正式 step 的时间顺序（基线 `zhp@b128504bfa` 附近；行号会随主干漂移，以符号名为准）：
+
+| 步骤 | 文件 | 行号附近 |
+|---|---|---|
+| `agent/request` waterfall | [`agent-loop/.../agent.ts`](../packages/core/agent-loop/src/agent.ts) | L630–L644 |
+| `prepareCall` | [`llm/.../index.ts`](../packages/llm/llm/src/index.ts) | L960–L1017 |
+| 写 `request/header` / `request/context`、冻请求 | 同上 `agent.ts` | L655–L743（`buildRequest`） |
+| `preparedCall.stream` / 消费 chunk | `agent.ts` | L490–L497、L541–L563 |
+| `llm/stream` waterfall 入口 | `llm/.../index.ts` | L1170–L1183 |
+| 投影 + dispatch | `llm/.../index.ts` | L1068–L1122（`adapterStream`） |
+| 适配器失败 → 终端 finish | `llm/.../index.ts` | L1188–L1195 |
+| 词汇 `StreamChunk` / `GenerateOptions` | [`types.ts`](../packages/llm/llm/src/types.ts) | L496–L508、L564+ |
+| 投影实现 | [`content.ts`](../packages/llm/llm/src/content.ts) | `projectFilesToText` L186+；`projectImagesForTextModel` L361+；`projectToolUpdates` L439+ |
+| 失败重试 | [`llm-retry/.../index.ts`](../packages/llm/llm-retry/src/index.ts) | L184–L187、L240–L248 |
+
 ## 读代码最短路径
 
 1. [`packages/llm/llm/README.zh.md`](../packages/llm/llm/README.zh.md)
