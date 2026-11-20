@@ -13,7 +13,7 @@
 
 **所有模型调用都走 `ctx.llm`：服务层只认一套 Message / ContentBlock / StreamChunk；适配器负责 wire 翻译；`prepareCall` 绑定当前这一代适配器后一次性分发；重试在 agent 步骤边界，不在原始 `stream()` 上。**（源码）
 
-关联：[02 请求链路](./02-request-lifecycle.md)（九步里的⑤⑥）；[12 Session 实现](./12-session-implementation.md)（`request/header`、assistant 结算）；官方 [llm 组](../packages/llm/README.md)、[llm-streaming](../docs/subsystems/llm-streaming.md)。
+关联：[13b `dsh-llm` 深读](./13b-dsh-llm.md)（核心包边界与投影）；[02 请求链路](./02-request-lifecycle.md)（九步里的⑤⑥）；[12 Session 实现](./12-session-implementation.md)（`request/header`、assistant 结算）；官方 [llm 组](../packages/llm/README.md)、[llm-streaming](../docs/subsystems/llm-streaming.md)。
 
 ## 1. 包地图
 
