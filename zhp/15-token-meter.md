@@ -13,7 +13,7 @@
 
 **回放 Session 日志估「当前请求/上下文有多挤」：不调模型、不做 loop 决策、不是账单；压缩读 `measure()`，UI 读压力投影。**（源码）
 
-关联：[15b 数字示例](./15b-token-meter-example.md)（接 [14b](./14b-prompt-assembly-example.md) Hello）；[14](./14-prompt-assembly.md)；[13](./13-llm-implementation.md)（图片/文件投影与计量共用）。
+关联：[15b 数字示例](./15b-token-meter-example.md)（接 [14b](./14b-prompt-assembly-example.md) Hello）；[16](./16-compaction.md)（`measure` 的主消费者）；[14](./14-prompt-assembly.md)；[13](./13-llm-implementation.md)（图片/文件投影与计量共用）。
 
 ---
 
