@@ -193,7 +193,7 @@ SessionPersistence + SessionHandle
 
 ## 还没搞懂
 
-1. **system prompt 调和细节**：`in-history` vs 无法力路由下，空/非空 `system/message` 如何 normalize、何时触发 `replace`？（06 也问过；本文只标了 node 0）
+1. **system prompt 调和细节**：`in-history` vs 无法力路由下，空/非空 `system/message` 如何 normalize、何时触发 `replace`？（机制见 [14](./14-prompt-assembly.md)；06 也问过；本文只标了 node 0）
 2. **`request/context` 与 prepared call**：admission 用的是当前 prepared call 能力，还是日志里上一条 context？边界条件？
 3. **checkpoint policy**：谁在何时 `flush`？turn 边界不 await flush 时，崩溃窗口多大？
 4. **message projection 注册生命周期**：卸载已用过的 projection 如何挡住缓存读？
