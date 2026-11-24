@@ -15,6 +15,8 @@
 
 与 [07-startup.md](./07-startup.md) 对照：DSH 的 `dsh --profile` 多了 profile / 空根 / 多层 patch / `boot()`；**Loader / Entry / `import` → `registry.plugin` 是同一套**。本文只讲 vendor 最小入口。
 
+概念加深：seam ↔ Service → [19](./19-seam-and-service.md)；plugin 两种形态 → [20](./20-plugin-and-service.md)。
+
 ## 1. 入口：`vendor/cordis/bin.js`
 
 ```js

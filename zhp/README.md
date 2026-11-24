@@ -30,6 +30,9 @@
 | [17b-bash-tool-flow.md](./17b-bash-tool-flow.md) | bash/shell | 命名三层、平台 bash/pwsh、loop→spawn |
 | [17c-sandbox-local.md](./17c-sandbox-local.md) | sandbox-local | 选 runner、拼 argv、四平台系统语法 |
 | [17d-subprocess.md](./17d-subprocess.md) | subprocess | seam、spawn/PTY、Linux scope / Win Job / fallback |
+| [18-jobs.md](./18-jobs.md) | jobs | 后台任务约定 / local 实现 / tool-jobs 使用 |
+| [19-seam-and-service.md](./19-seam-and-service.md) | seam ↔ service | 能力缝 vs `ctx` 服务；谁是谁不是 |
+| [20-plugin-and-service.md](./20-plugin-and-service.md) | plugin ↔ service | apply vs class、哲学、场景 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -48,6 +51,8 @@
 想弄清工具注册与执行 → `17`；bash/shell 命名、平台差异与到底层 spawn → `17b`。
 想弄清 `sandbox-local` 怎么选 runner、拼 argv、四平台语法 → `17c`（权限实测仍看 `03`）。
 想弄清 `ctx.subprocess` 设计、用法与 Linux scope / Win Job / fallback → `17d`。
+想弄清后台任务 jobs → `18`。
+想弄清 seam 与 Service 的关系 → `19`；plugin 与 Service、两种形态 → `20`（可先扫 `10`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

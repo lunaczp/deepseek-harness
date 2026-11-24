@@ -15,7 +15,7 @@
 
 **模型工具按方言叫 `bash`/`pwsh`；能力 seam 叫通用的 `ctx.shell`；产品默认用 sandbox 版 Provider 注册成唯一 `ctx.shell`。不同 OS 组合挂不同工具，模型看到的工具名本身就不同。**（源码）
 
-关联：[17](./17-tools.md)；[17c](./17c-sandbox-local.md)（`confine` / 四 runner）；[17d](./17d-subprocess.md)（`ctx.subprocess`）；[03](./03-sandbox-and-permissions.md)；[12](./12-session-implementation.md)。
+关联：[17](./17-tools.md)；[17c](./17c-sandbox-local.md)（`confine` / 四 runner）；[17d](./17d-subprocess.md)（`ctx.subprocess`）；[18](./18-jobs.md)（后台 job）；[03](./03-sandbox-and-permissions.md)；[12](./12-session-implementation.md)。
 
 ---
 
