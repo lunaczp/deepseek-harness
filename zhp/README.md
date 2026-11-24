@@ -29,6 +29,7 @@
 | [17-tools.md](./17-tools.md) | 工具模块 | 注册表 / 执行器 / 流水线 / loop 批次 |
 | [17b-bash-tool-flow.md](./17b-bash-tool-flow.md) | bash/shell | 命名三层、平台 bash/pwsh、loop→spawn |
 | [17c-sandbox-local.md](./17c-sandbox-local.md) | sandbox-local | 选 runner、拼 argv、四平台系统语法 |
+| [17d-subprocess.md](./17d-subprocess.md) | subprocess | seam、spawn/PTY、Linux scope / Win Job / fallback |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -46,6 +47,7 @@
 想弄清长会话如何压缩 → `16`；要逐步日志示意 → `16b`。
 想弄清工具注册与执行 → `17`；bash/shell 命名、平台差异与到底层 spawn → `17b`。
 想弄清 `sandbox-local` 怎么选 runner、拼 argv、四平台语法 → `17c`（权限实测仍看 `03`）。
+想弄清 `ctx.subprocess` 设计、用法与 Linux scope / Win Job / fallback → `17d`。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

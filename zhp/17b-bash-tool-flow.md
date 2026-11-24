@@ -15,7 +15,7 @@
 
 **模型工具按方言叫 `bash`/`pwsh`；能力 seam 叫通用的 `ctx.shell`；产品默认用 sandbox 版 Provider 注册成唯一 `ctx.shell`。不同 OS 组合挂不同工具，模型看到的工具名本身就不同。**（源码）
 
-关联：[17](./17-tools.md)；[17c](./17c-sandbox-local.md)（`confine` / 四 runner）；[03](./03-sandbox-and-permissions.md)；[12](./12-session-implementation.md)。
+关联：[17](./17-tools.md)；[17c](./17c-sandbox-local.md)（`confine` / 四 runner）；[17d](./17d-subprocess.md)（`ctx.subprocess`）；[03](./03-sandbox-and-permissions.md)；[12](./12-session-implementation.md)。
 
 ---
 
@@ -181,3 +181,4 @@ tool/result                # surface
 3. 工具：[tool-bash L368](../packages/shell/tool-bash/src/index.ts#L368) → [L526](../packages/shell/tool-bash/src/index.ts#L526) → [L542](../packages/shell/tool-bash/src/index.ts#L542)
 4. 到底层：[bash-local L187](../packages/shell/bash-local/src/index.ts#L187) → [subprocess-local L197](../packages/subprocess/subprocess-local/src/index.ts#L197)
 5. 沙箱拼 argv：[17c](./17c-sandbox-local.md) → [confine L325](../packages/sandbox/sandbox-local/src/index.ts#L325)
+6. 起进程：[17d](./17d-subprocess.md) → [bash-local L259](../packages/shell/bash-local/src/index.ts#L259) / [subprocess-local L197](../packages/subprocess/subprocess-local/src/index.ts#L197)
