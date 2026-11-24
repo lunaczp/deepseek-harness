@@ -13,7 +13,7 @@
 
 **`ctx.tools` 是作用域化注册表；native/PTC 执行器拥有批次；共享流水线做门禁与结算；agent-loop 只从助手消息抽出 `tool-call` 再 `execute`。**（源码）
 
-关联：[17b bash 注册与调用](./17b-bash-tool-flow.md)；[12](./12-session-implementation.md)（`tool/call` log-only / `tool/result` surface）；[14](./14-prompt-assembly.md)（schema 进 assemble）；[02](./02-request-lifecycle.md)。
+关联：[17b bash/shell 全链路与平台命名](./17b-bash-tool-flow.md)；[12](./12-session-implementation.md)（`tool/call` log-only / `tool/result` surface）；[14](./14-prompt-assembly.md)（schema 进 assemble）；[02](./02-request-lifecycle.md)。
 
 ---
 
@@ -24,10 +24,20 @@
 | 注册表 | [`dsh-tools`](../packages/core/tools/README.zh.md) | `register` / `restrict` / `resolve` / `schemas` / `execute` / `guard` |
 | 执行器 | [`dsh-tool-executor-native`](../packages/core/tool-executor-native/README.zh.md) / [`dsh-tool-executor-ptc`](../packages/core/tool-executor-ptc/README.zh.md) | `describe` + `execute(batch)` |
 | 共享流水线 | `tools/src/pipeline.ts` + `batch.ts` | pre → guard → around → body → post → finalize → `tools/result`；并发；写 Session |
-| 具体能力 | 如 [`dsh-tool-bash`](../packages/shell/tool-bash/README.zh.md)、MCP… | `defineTool` → `ctx.tools.register` |
+| 具体能力 | 如 [`dsh-tool-bash`](../packages/shell/tool-bash/README.zh.md) / [`dsh-tool-pwsh`](../packages/shell/tool-pwsh/README.zh.md)、MCP… | `defineTool` → `ctx.tools.register`（**Consumer**） |
 | 循环 | [`dsh-agent-loop`](../packages/core/agent-loop/README.zh.md) | `resolve` toolSet → assemble → LLM → `tools.execute` |
 
-`base` bundle 典型挂载（[`base/cordis.patch.yml`](../packages/bundle/base/cordis.patch.yml)）：`dsh-tools` + `dsh-tool-executor-native` + `dsh-tool-bash` 等。
+`base`（[`cordis.patch.yml`](../packages/bundle/base/cordis.patch.yml)）：`dsh-tools` + native 执行器；**POSIX 挂 `tool-bash` + `bash-sandbox`，Windows 挂 `tool-pwsh` + `pwsh-sandbox`**——模型看到的工具名随平台而变（详见 [17b §0、§8](./17b-bash-tool-flow.md)）。
+
+### 1.1 工具模块如何串联 seam
+
+```text
+下游 seam（shell / lsp / fs…）← Provider 注册成 ctx.xxx
+tool-* Consumer：defineTool + ctx.tools.register
+loop：只调 ctx.tools.execute → Definition.execute → 再调下游 seam
+```
+
+`tool-*` **不是** seam 实现；`ctx.tools` 是注册表 seam；`ToolExecutor`（native/PTC）用 `setExecutor` 挂上，无独立 `ctx` 键。shell 细节见 [17b](./17b-bash-tool-flow.md)。
 
 ---
 

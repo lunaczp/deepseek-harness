@@ -1,21 +1,37 @@
-# bash 举例：注册 → 模型可见 → 真实调用
+# bash / shell：注册、调用链、命名与平台差异
 
 | | |
 |---|---|
 | 状态 | 学习中（源码走读；数字 / seq 为示意） |
 | 日期 | 2026-11-24 |
-| 基线 | `zhp@16ff94b0eb` |
-| 证据 | 源码；权威见 [`tool-bash`](../packages/shell/tool-bash/README.zh.md)、[`dsh-tools`](../packages/core/tools/README.zh.md) |
+| 基线 | `zhp@84a231a84e` |
+| 证据 | 源码；权威见 [`tool-bash`](../packages/shell/tool-bash/README.zh.md)、[`shell`](../packages/shell/shell/README.zh.md)、[`bash-sandbox`](../packages/shell/bash-sandbox/README.zh.md)、[`base/cordis.patch.yml`](../packages/bundle/base/cordis.patch.yml) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
 > 本篇事件序为**示意**；真值待会话 jsonl 核对。
-> **跳转**：下方「锚点速查」与文中 `[…#Ln](../packages/…#Ln)` 在 **Cursor 聊天 / GitHub** 可点开定位；侧边栏文档预览点不开（见 [05](./05-workspace-conventions.md)）。
+> **跳转**：`[…#Ln](../packages/…#Ln)` 在 Cursor 聊天 / GitHub 可点；侧边栏预览点不开（见 [05](./05-workspace-conventions.md)）。
 
 ## 一句话
 
-**启动时 `tool-bash` 把 `defineTool({ name: 'bash' })` 注册进 `ctx.tools`；每步 resolve 后 schema 进请求；模型回 `tool-call` → loop `tools.execute` → 流水线 → `bash.execute` → `ctx.shell.execute` → `tool/result` 进 surface。**（源码）
+**模型工具按方言叫 `bash`/`pwsh`；能力 seam 叫通用的 `ctx.shell`；产品默认用 sandbox 版 Provider 注册成唯一 `ctx.shell`。不同 OS 组合挂不同工具，模型看到的工具名本身就不同。**（源码）
 
-关联：[17](./17-tools.md)；[12](./12-session-implementation.md)；[03](./03-sandbox-and-permissions.md)（沙箱审批）。
+关联：[17](./17-tools.md)；[03](./03-sandbox-and-permissions.md)；[12](./12-session-implementation.md)。
+
+---
+
+## 0. 三层命名（为何工具叫 bash、seam 叫 shell）
+
+| 层 | 名字 | 具体到什么 |
+|---|---|---|
+| **模型工具（Consumer）** | `bash` / `pwsh` | 模型该写哪种**方言**的命令字符串 |
+| **能力 seam** | `ctx.shell` | 「跑一条命令」的抽象（`resolve` / `execute`） |
+| **Provider** | `bash-local` / `bash-sandbox` / `pwsh-*` | 怎么起进程、要不要沙箱 |
+
+- `shell` 通用：Provider 可换，tool body 只调 `ctx.shell`。
+- 工具名钉死方言：仓库**不做** bash↔pwsh 翻译（[`tool-pwsh` README](../packages/shell/tool-pwsh/README.zh.md)）。若改成通用名 `shell`，模型更易写错方言。
+- **不是命名事故**：Consumer 偏具体、seam 偏抽象——与 `tool-lsp` 消费 `ctx.lsp` 同理。
+
+**因此：不同环境下，模型看到的工具本身就不同**（见 §8）。
 
 ---
 
@@ -23,108 +39,144 @@
 
 | 阶段 | 链接 |
 |---|---|
-| inject | [`tool-bash` L33–L34](../packages/shell/tool-bash/src/index.ts#L33) |
-| native `apply` / `setExecutor` | [`tool-executor-native` L33–L35](../packages/core/tool-executor-native/src/index.ts#L33) |
-| `apply` 入口 | [`tool-bash` L202](../packages/shell/tool-bash/src/index.ts#L202) |
+| Context 声明 `shell` | [`shell` L30–L34](../packages/shell/shell/src/index.ts#L30) |
+| `ShellExecutor` 注册 `super(ctx,'shell')` | [`shell` L64–L67](../packages/shell/shell/src/index.ts#L64) |
+| Cordis `Service` provide | [`vendor/cordis/.../service.ts` L42](../vendor/cordis/src/service.ts#L42) |
+| `LocalBashExecutor` | [`bash-local` L97](../packages/shell/bash-local/src/index.ts#L97) |
+| `SandboxBashExecutor` | [`bash-sandbox` L45](../packages/shell/bash-sandbox/src/index.ts#L45) |
+| base：bash/pwsh 平台开关 | [`base/cordis.patch.yml` L249–L287](../packages/bundle/base/cordis.patch.yml#L249) |
+| tool-bash inject | [`tool-bash` L33–L34](../packages/shell/tool-bash/src/index.ts#L33) |
 | `defineTool({ name: 'bash' })` | [`tool-bash` L368](../packages/shell/tool-bash/src/index.ts#L368) |
-| `bash.execute` 前台 | [`tool-bash` L478–L530](../packages/shell/tool-bash/src/index.ts#L478) |
-| 后台 / promote 分支 | [`tool-bash` L498–L525](../packages/shell/tool-bash/src/index.ts#L498) |
+| `bash.execute` 前台 → shell | [`tool-bash` L526–L530](../packages/shell/tool-bash/src/index.ts#L526) |
 | `register` | [`tool-bash` L542–L555](../packages/shell/tool-bash/src/index.ts#L542) |
-| `ToolsService.register` | [`tools` L128–L152](../packages/core/tools/src/index.ts#L128) |
-| `systemPrompt.tools` 接线 | [`tools` L111–L117](../packages/core/tools/src/index.ts#L111) |
-| `tools.execute` 转执行器 | [`tools` L375–L377](../packages/core/tools/src/index.ts#L375) |
-| native `describe` / `execute` | [`native` L15–L20](../packages/core/tool-executor-native/src/index.ts#L15) |
-| preStep `resolve`+`assemble` | [`agent` L292–L294](../packages/core/agent-loop/src/agent.ts#L292) |
-| 抽 call → `tools.execute` | [`agent` L586–L597](../packages/core/agent-loop/src/agent.ts#L586) |
-| 写 `tool/call` | [`batch` L243–L249](../packages/core/tools/src/batch.ts#L243) |
-| 写 `tool/result` | [`batch` L252–L265](../packages/core/tools/src/batch.ts#L252) |
-| base 组合 | [`base/cordis.patch.yml`](../packages/bundle/base/cordis.patch.yml) |
+| loop → `tools.execute` | [`agent` L586–L597](../packages/core/agent-loop/src/agent.ts#L586) |
+| native batch | [`native` L19–L20](../packages/core/tool-executor-native/src/index.ts#L19) |
+| `tool/call` / `tool/result` | [`batch` L243](../packages/core/tools/src/batch.ts#L243)、[L252](../packages/core/tools/src/batch.ts#L252) |
+| local `bash -c` | [`bash-local` L187–L188](../packages/shell/bash-local/src/index.ts#L187) |
+| `subprocess.spawn` | [`bash-local` L259](../packages/shell/bash-local/src/index.ts#L259)、[`subprocess-local` L197](../packages/subprocess/subprocess-local/src/index.ts#L197) |
 
 ---
 
-## ① 组合：谁挂了 bash
+## 1. `ctx.shell` 怎么注册（不是 `tools.register`）
 
-[`base/cordis.patch.yml`](../packages/bundle/base/cordis.patch.yml) 大致：`dsh-tools` + `dsh-tool-executor-native` + `dsh-tool-bash`。
+1. Provider 插件 `export default XxxExecutor`（extends `ShellExecutor`）。
+2. Loader 挂载 → `new XxxExecutor(ctx)` → [`super(ctx, 'shell')`](../packages/shell/shell/src/index.ts#L64) → Cordis `provide('shell', this)`。
+3. **每个 Context 只能有一个** `ctx.shell`；再挂第二个同名 Service 会抛错。
 
-[`tool-bash` L33–L34](../packages/shell/tool-bash/src/index.ts#L33)：`inject = ['tools', 'shell', 'systemPrompt', 'shellEnv', 'workingDirectory']`。
+产品默认（非 Windows）挂的是 **`dsh-bash-sandbox`**（继承 local），不是裸 local；Windows 挂 **`pwsh-sandbox`**（见 [base L249–L257](../packages/bundle/base/cordis.patch.yml#L249)、[L281–L287](../packages/bundle/base/cordis.patch.yml#L281)）。
 
-[`tool-executor-native` L33–L35](../packages/core/tool-executor-native/src/index.ts#L33)：`ctx.tools.setExecutor(new NativeToolExecutor(ctx))`。
-
----
-
-## ② 注册：`apply` → `defineTool` → `register`
-
-- 入口：[apply L202](../packages/shell/tool-bash/src/index.ts#L202)
-- 定义：[defineTool L368–L534](../packages/shell/tool-bash/src/index.ts#L368)（`name: 'bash'`、parameters、`output`、`execute`、`present*`）
-- 挂表：[register L542–L555](../packages/shell/tool-bash/src/index.ts#L542)（有 `jobs` 换后台变体；无则前台-only）
-- 注册表实现：[ToolsService.register L128–L152](../packages/core/tools/src/index.ts#L128)
-
----
-
-## ③ 本步准入：resolve + schema 进模型
-
-- [agent L292–L294](../packages/core/agent-loop/src/agent.ts#L292)：`tools.resolve` → `systemPrompt.assemble({ toolSet })`
-- schema 接线：[tools L111–L117](../packages/core/tools/src/index.ts#L111)
-- 投影：[native describe L15–L16](../packages/core/tool-executor-native/src/index.ts#L15)
-
-`execute` / `output.render` **不会**进模型请求。
-
----
-
-## ④ 模型回调用 → loop 批次
-
-- [agent L586–L597](../packages/core/agent-loop/src/agent.ts#L586)：filter `tool-call` → `tools.execute({ calls, log, toolSet, … })`
-- 转执行器：[tools L375–L377](../packages/core/tools/src/index.ts#L375) → [native L19–L20](../packages/core/tool-executor-native/src/index.ts#L19) → `executeToolBatch`
-
----
-
-## ⑤ 批次内：日志 + bash 身体
-
-1. **写 `tool/call`（log-only）**：[batch L243–L249](../packages/core/tools/src/batch.ts#L243)
-2. **流水线**：见 [17 §4](./17-tools.md) / [流水线图](../docs/tool-execution-pipeline.zh.md)
-3. **bash `execute` 前台**：[L478–L530](../packages/shell/tool-bash/src/index.ts#L478) → `ctx.shell.resolve` / `ctx.shell.execute`；后台 / promote：[L498–L525](../packages/shell/tool-bash/src/index.ts#L498)
-4. **写 `tool/result`（surface）**：[batch L252–L265](../packages/core/tools/src/batch.ts#L252)（`sourceEventSeqs` 引 `tool/call`）
-
-**Consumer `bash` → Provider `ctx.shell`**，不是 bash 自己 spawn。
-
----
-
-## ⑥ 事件序示意（一次前台 `ls`）
+**没有运行时「选中 bash-local」**：组合时谁注册成唯一 `ctx.shell` 就是谁；`tool-bash` 不参与选择。
 
 ```text
-… step/start …
-system/message / user/message / request/header …
-assistant/message          # surface；content 含 tool-call bash
-tool/call                  # log-only；name=bash, arguments=…
-  … pre-execute / guards / shell.execute …
-tool/result                # surface；text = 命令输出渲染
-… step/end …
+SandboxBashExecutor  extends  LocalBashExecutor  extends  ShellExecutor
 ```
-
-下一请求 `deriveMessages()` 可见 assistant（带 tool-call）+ tool/result；**看不到**孤立 `tool/call` 事件。
 
 ---
 
-## ⑦ 对照表
+## 2. tool-bash body 与 `ctx.shell` 的关系
 
-| 阶段 | 代码锚点 | 是否调 LLM | Session |
-|---|---|---|---|
-| 注册 | [L368](../packages/shell/tool-bash/src/index.ts#L368) + [L542](../packages/shell/tool-bash/src/index.ts#L542) | 否 | 无 |
-| 本步 schema | [agent L292](../packages/core/agent-loop/src/agent.ts#L292) | 否 | header / system 另记 |
-| 模型决定调 bash | adapter stream | **是** | `assistant/message` |
-| 执行 bash | [agent L586](../packages/core/agent-loop/src/agent.ts#L586) → [batch](../packages/core/tools/src/batch.ts#L243) → [L478](../packages/shell/tool-bash/src/index.ts#L478) | 否 | `tool/call` → `tool/result` |
-| 带结果再问 | 下一步 LLM | **是** | 新 `assistant/message` |
+| | tool-bash `execute` | `ctx.shell` |
+|---|---|---|
+| 角色 | Consumer：模型 ↔ 命令 | seam：真正执行 |
+| 负责 | 校验 args、cwd、升权、jobs 前后台、规范 JSON / render | `resolve` 默认与上限；`execute` 起进程 |
+| 不负责 | `bash -c` / confine | 工具 schema、tool/call 日志 |
+
+前台（[L526–L530](../packages/shell/tool-bash/src/index.ts#L526)）：
+
+```text
+request = { command, workdir, timeoutMs, dshEnv, sandboxPolicy? }
+spec = ctx.shell.resolve({ ...request, signal })
+foreground = await ctx.shell.execute(spec)
+→ { kind: 'foreground', ...canonicalBashResult(...) }
+```
+
+换 local / sandbox / 将来远程 shell：**改 Provider；body 不变。**
+
+---
+
+## 3. 组合：谁挂了 bash 工具
+
+[`base/cordis.patch.yml`](../packages/bundle/base/cordis.patch.yml)：`dsh-tools` + native 执行器 +（POSIX）`dsh-tool-bash` + `bash-sandbox`。
+
+[`tool-bash` inject](../packages/shell/tool-bash/src/index.ts#L33)：`tools`, `shell`, `systemPrompt`, `shellEnv`, `workingDirectory`。
+
+---
+
+## 4. 注册工具：`apply` → `defineTool` → `register`
+
+- [apply L202](../packages/shell/tool-bash/src/index.ts#L202)
+- [defineTool L368](../packages/shell/tool-bash/src/index.ts#L368)（`name: 'bash'`）
+- [register L542–L555](../packages/shell/tool-bash/src/index.ts#L542)（有 `jobs` 换后台变体）
+- [ToolsService.register L128](../packages/core/tools/src/index.ts#L128)
+
+---
+
+## 5. 从 loop 到真实 spawn（前台、native）
+
+```text
+① agent.ts L586
+   tools.execute({ calls, log, toolSet, … })
+② tools → NativeToolExecutor → executeToolBatch
+   append tool/call（log-only）
+   pipeline → ToolDefinition.execute
+③ tool-bash L526
+   ctx.shell.resolve / execute
+④ 默认 ctx.shell = SandboxBashExecutor
+   →（confine）→ LocalBashExecutor.executeArgv(['bash','-c', command])  L187
+⑤ ctx.subprocess.spawn  L259
+   → subprocess-local → node:child_process.spawn
+   append tool/result（surface）
+```
+
+关键点：[agent L586](../packages/core/agent-loop/src/agent.ts#L586)、[batch](../packages/core/tools/src/batch.ts#L243)、[pipeline dispatch](../packages/core/tools/src/pipeline.ts#L272)、[bash-local L187](../packages/shell/bash-local/src/index.ts#L187)、[subprocess-local L197](../packages/subprocess/subprocess-local/src/index.ts#L197)。
+
+---
+
+## 6. 事件序示意（一次前台 `ls`）
+
+```text
+assistant/message          # surface；content 含 tool-call bash
+tool/call                  # log-only
+  … pre-execute / guards / shell.execute / subprocess.spawn …
+tool/result                # surface
+```
+
+`deriveMessages()` 看见 assistant + tool/result；看不见孤立 `tool/call`。
+
+---
+
+## 7. ToolExecutor vs ShellExecutor（易混）
+
+| | ToolExecutor（native/PTC） | ShellExecutor（`ctx.shell`） |
+|---|---|---|
+| 挂法 | `ctx.tools.setExecutor` | `super(ctx,'shell')` |
+| 干什么 | 整批模型 tool-call | 一条 shell 命令 |
+| 与 bash | 调度到 `bash` Definition | bash body 的下游 |
+
+---
+
+## 8. Windows 下三层 / 模型看到的工具不同
+
+**对：不同环境 → 模型可见工具名/方言不同**（base 用 `disabled: !!js process.platform …` 切换）。
+
+| 层 | POSIX（默认 base） | Windows（默认 base） |
+|---|---|---|
+| 模型工具 | **`bash`**（`tool-bash`） | **`pwsh`**（`tool-pwsh`；tool-bash disabled） |
+| seam | **`ctx.shell`**（同一个键） | 同左 |
+| Provider | **`bash-sandbox`**（extends local） | **`pwsh-sandbox`**（extends `PwshLocalExecutor`） |
+
+[`base` L281–L287](../packages/bundle/base/cordis.patch.yml#L281)：`tool-bash` / `tool-pwsh` 按平台互斥启用。
 
 ---
 
 ## 还没搞懂
 
-1. 本机 jsonl 里一次真实 bash 的 seq / `sourceEventSeqs`（待实测）。
-2. `promoteOnTimeout` 与 `job_*` 工具在模型可见文案上的衔接。
+1. 本机 jsonl 一次真实 bash / pwsh 的 seq 与 `sourceEventSeqs`（待实测）。
+2. `promoteOnTimeout` 与 `job_*` 在模型文案上的衔接。
 
 ## 读代码最短路径
 
-1. [tool-bash L202](../packages/shell/tool-bash/src/index.ts#L202) → [L368](../packages/shell/tool-bash/src/index.ts#L368) → [L478](../packages/shell/tool-bash/src/index.ts#L478) → [L542](../packages/shell/tool-bash/src/index.ts#L542)
-2. [agent L292](../packages/core/agent-loop/src/agent.ts#L292)、[L586](../packages/core/agent-loop/src/agent.ts#L586)
-3. [batch L243](../packages/core/tools/src/batch.ts#L243)、[L252](../packages/core/tools/src/batch.ts#L252)
-4. [shell README](../packages/shell/shell/README.zh.md)
+1. 命名 / 平台：[base patch L249–L287](../packages/bundle/base/cordis.patch.yml#L249) + 本篇 §0、§8
+2. shell 注册：[shell L64](../packages/shell/shell/src/index.ts#L64) → [bash-sandbox L45](../packages/shell/bash-sandbox/src/index.ts#L45)
+3. 工具：[tool-bash L368](../packages/shell/tool-bash/src/index.ts#L368) → [L526](../packages/shell/tool-bash/src/index.ts#L526) → [L542](../packages/shell/tool-bash/src/index.ts#L542)
+4. 到底层：[bash-local L187](../packages/shell/bash-local/src/index.ts#L187) → [subprocess-local L197](../packages/subprocess/subprocess-local/src/index.ts#L197)
