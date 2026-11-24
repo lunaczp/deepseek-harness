@@ -33,6 +33,7 @@
 | [18-jobs.md](./18-jobs.md) | jobs | 后台任务约定 / local 实现 / tool-jobs 使用 |
 | [19-seam-and-service.md](./19-seam-and-service.md) | seam ↔ service | 能力缝 vs `ctx` 服务；谁是谁不是 |
 | [20-plugin-and-service.md](./20-plugin-and-service.md) | plugin ↔ service | apply vs class、哲学、场景 |
+| [21-fs.md](./21-fs.md) | fs | `ctx.fs`、local/sandbox、tool-fs / 搜索 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -53,6 +54,7 @@
 想弄清 `ctx.subprocess` 设计、用法与 Linux scope / Win Job / fallback → `17d`。
 想弄清后台任务 jobs → `18`。
 想弄清 seam 与 Service 的关系 → `19`；plugin 与 Service、两种形态 → `20`（可先扫 `10`）。
+想弄清文件系统 `ctx.fs` / tool-fs → `21`（写边界实测仍看 `03`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

@@ -15,7 +15,7 @@
 
 **`sandbox-local` 不自己 spawn：按平台选 runner → 用 `SandboxPolicy` 拼 profile → 返回 `runner + profile + '--' + 原 argv`；不可用则 `SANDBOX_UNAVAILABLE`（fail-closed，绝不退回裸 argv）。**（源码）
 
-关联：[17b](./17b-bash-tool-flow.md)（bash → `ctx.sandbox.confine`）；[17d](./17d-subprocess.md)（`confine` 之后的 `spawn`）；[03](./03-sandbox-and-permissions.md)（权限实测）。
+关联：[17b](./17b-bash-tool-flow.md)（bash → `ctx.sandbox.confine`）；[17d](./17d-subprocess.md)（`confine` 之后的 `spawn`）；[21](./21-fs.md)（`fs-sandbox` 路径围栏，另一族）；[03](./03-sandbox-and-permissions.md)（权限实测）。
 
 ---
 
