@@ -28,6 +28,7 @@
 | [16b-compaction-example.md](./16b-compaction-example.md) | 压缩示例 | 压力触发时的日志与模型视图 |
 | [17-tools.md](./17-tools.md) | 工具模块 | 注册表 / 执行器 / 流水线 / loop 批次 |
 | [17b-bash-tool-flow.md](./17b-bash-tool-flow.md) | bash/shell | 命名三层、平台 bash/pwsh、loop→spawn |
+| [17c-sandbox-local.md](./17c-sandbox-local.md) | sandbox-local | 选 runner、拼 argv、四平台系统语法 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议

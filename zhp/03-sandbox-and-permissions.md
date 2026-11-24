@@ -91,6 +91,8 @@ man page 原话：
 
 对"给任意 CLI 命令套自定义沙箱"，Apple 至今没有官方方案。这也是 Claude Code、Codex、Homebrew 等仍在使用它的原因。
 
+> 实现层（`confine`、四 runner 如何拼 argv、系统 CLI 入门）见 [17c](./17c-sandbox-local.md)；本篇只保留权限/边界实测。
+
 ## 6. 三平台后端
 
 | | macOS | Linux | Windows |
