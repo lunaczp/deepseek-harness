@@ -26,6 +26,8 @@
 | [15b-token-meter-example.md](./15b-token-meter-example.md) | 计量示例 | 接 14b Hello 的启发式推算 |
 | [16-compaction.md](./16-compaction.md) | 会话压缩 | 压力 / 溢出 / replace 摘要 / 锁 |
 | [16b-compaction-example.md](./16b-compaction-example.md) | 压缩示例 | 压力触发时的日志与模型视图 |
+| [17-tools.md](./17-tools.md) | 工具模块 | 注册表 / 执行器 / 流水线 / loop 批次 |
+| [17b-bash-tool-flow.md](./17b-bash-tool-flow.md) | bash 调用链 | 注册 → schema → execute → shell → result |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -41,6 +43,7 @@
 想弄清请求前提示词怎么拼 → `14`；要逐步字符串例子 → `14b`。
 想弄清 token / 上下文压力怎么估 → `15`；要接 Hello 表面的数字推算 → `15b`。
 想弄清长会话如何压缩 → `16`；要逐步日志示意 → `16b`。
+想弄清工具注册与执行 → `17`；要跟一条 bash → `17b`。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
