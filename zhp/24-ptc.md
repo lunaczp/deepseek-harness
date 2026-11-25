@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`ptc-runtime/` 组](../packages/ptc-runtime/README.zh.md)、[`dsh-ptc-runtime`](../packages/ptc-runtime/ptc-runtime/README.zh.md)、[`ptc-runtime-node`](../packages/ptc-runtime/ptc-runtime-node/README.zh.md)、[`tool-executor-ptc`](../packages/core/tool-executor-ptc/README.zh.md)、[`tool-executor-native`](../packages/core/tool-executor-native/README.zh.md)、[`docs/subsystems/ptc-runtime.zh.md`](../docs/subsystems/ptc-runtime.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。工具注册表/流水线 → [17](./17-tools.md)；scope 选执行器 → [23](./23-scope.md)；提示词组装总览 → [14](./14-prompt-assembly.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。工具注册表/流水线 → [17](./17-tools.md)；scope 选执行器 → [23](./23-scope.md)；提示词组装总览 → [14](./14-prompt-assembly.md)；默认工具里的 web → [25](./25-web.md)。
 
 ## 一句话
 

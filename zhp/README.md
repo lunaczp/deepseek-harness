@@ -37,6 +37,7 @@
 | [22-lsp.md](./22-lsp.md) | LSP | `ctx.lsp`、stdio server、只读导航工具 |
 | [23-scope.md](./23-scope.md) | scope | ScopeKey、父链、按 agent 的贡献隔离 |
 | [24-ptc.md](./24-ptc.md) | PTC | 运行时 seam、Native/PTC 执行器、提示词例子 |
+| [25-web.md](./25-web.md) | web | `ctx.web`、search/fetch 提供方、`web_search`/`web_fetch` |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -61,6 +62,7 @@
 想弄清可选 LSP 语义导航 → `22`。
 想弄清 scope / 按 agent 注册 → `23`。
 想弄清 PTC 运行时与 Native/PTC 提示词差异 → `24`（工具流水线仍看 `17`）。
+想弄清 web 搜索/抓取 seam → `25`（勿与 web-app GUI 混淆）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
