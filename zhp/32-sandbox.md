@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`packages/sandbox/`](../packages/sandbox/README.zh.md)、[`docs/subsystems/sandbox.zh.md`](../docs/subsystems/sandbox.zh.md)、[`docs/capability-seams.zh.md`](../docs/capability-seams.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。实测边界 [03](./03-sandbox-and-permissions.md)；argv 拼接 [17c](./17c-sandbox-local.md)；审批升权 [30](./30-approval.md)；权限预设 [31](./31-permission-presets.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。实测边界 [03](./03-sandbox-and-permissions.md)；argv 拼接 [17c](./17c-sandbox-local.md)；审批升权 [30](./30-approval.md)；权限预设 [31](./31-permission-presets.md)；计划模式（软指引，正交）[33](./33-plan-mode.md)。
 
 ## 一句话
 

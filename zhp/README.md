@@ -46,6 +46,7 @@
 | [30-approval.md](./30-approval.md) | 审批 | `ctx.approval`、Host 闸门、pre-execute、Codex hook 例 |
 | [31-permission-presets.md](./31-permission-presets.md) | 权限预设 | 多条捆绑表、写通旋钮、`danger-full-access` |
 | [32-sandbox.md](./32-sandbox.md) | 进程沙箱 seam | policy/confine、升权、策略与机制分离 |
+| [33-plan-mode.md](./33-plan-mode.md) | 计划模式 | `/plan`、提示词注入、`exit_plan_mode` 评审 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -79,6 +80,7 @@
 想弄清用户审批 / Host 闸门 / pre-execute / hook 桥 → `30`（流水线对照 `17e`，沙箱实测对照 `03`）。
 想弄清权限预设捆绑 / danger-full-access → `31`（审批对照 `30`）。
 想弄清进程沙箱 seam / policy·confine / 策略与机制 → `32`（argv 拼装对照 `17c`，实测对照 `03`）。
+想弄清计划模式 / `/plan` / `exit_plan_mode` → `33`（提示词对照 `14`，审批对照 `30`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
