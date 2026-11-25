@@ -106,7 +106,7 @@ profile（~/.dsh/profiles/web） bundle 列表 + 用户 cordis.patch.yml
 
 ## 还没搞懂
 
-1. `typert` 到底解决什么问题（类型图为什么要运行时注册）。
-2. `api/` 的 BFF 与 Typert 网关如何分工。
+1. ~~`typert` 到底解决什么问题（类型图为什么要运行时注册）。~~ → 主线见 [26](./26-typert.md)；剩余细节仍在该篇「还没搞懂」。
+2. `api/` 的 BFF 与 Typert 网关如何分工（[26](./26-typert.md) 已覆盖 Remote 主路径，完整边界仍开放）。
 3. `client/` 70 个包的槽位（Slot）体系如何组织页面。
 4. `experimental/` 的 62 个包里，哪些其实已被产品使用。

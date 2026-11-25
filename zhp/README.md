@@ -39,6 +39,7 @@
 | [23-scope.md](./23-scope.md) | scope | ScopeKey、父链、按 agent 的贡献隔离 |
 | [24-ptc.md](./24-ptc.md) | PTC | 运行时 seam、Native/PTC 执行器、提示词例子 |
 | [25-web.md](./25-web.md) | web | `ctx.web`、search/fetch 提供方、`web_search`/`web_fetch` |
+| [26-typert.md](./26-typert.md) | Typert | 类型图 / Remote / Zod / Host↔Client 打包与进程 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -65,6 +66,7 @@
 想弄清 scope / 按 agent 注册 → `23`。
 想弄清 PTC 运行时与 Native/PTC 提示词差异 → `24`（流水线深读看 `17e`）。
 想弄清 web 搜索/抓取 seam → `25`（勿与 web-app GUI 混淆）。
+想弄清 Typert / Remote / Client 打包与 Host 进程 → `26`（仓库地图开放问对照 `08`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

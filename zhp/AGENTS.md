@@ -23,8 +23,8 @@
 
 ## 进度锚点
 
-- 已完成：`00`–`25`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`（见索引）。
-- 下一步候选：HMR 热更新、或本机实测 bash / jobs / fs / LSP / PTC / web / 工具并行 / Linux scope 对照。
+- 已完成：`00`–`26`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`（见索引）。
+- 下一步候选：HMR 热更新、或本机实测 bash / jobs / fs / LSP / PTC / web / Typert generate / 工具并行 / Linux scope 对照。
 - 已知待修：`04` 的不变量措辞与状态行；`03` 的 `lsof` 结论（实测 `lsof -p` 可看到进程，只有 `ps` 被 setuid 检查拦住）。
 
 ## 环境事实

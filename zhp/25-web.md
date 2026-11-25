@@ -21,7 +21,7 @@
 | 名字 | 关系 |
 |---|---|
 | `packages/web/`（本文） | ✅ 模型侧 web 访问能力缝 |
-| `web-app` / `web-client` / `web-server` | ❌ GUI / Host HTTP（另一套子系统） |
+| `web-app` / `web-client` / `web-server` | ❌ GUI / Host HTTP（另一套；Typert Remote 见 [26](./26-typert.md)） |
 | `browser-use` | ❌ 交互式浏览器自动化 |
 | `webhook` | ❌ 外部回调进 Session |
 
