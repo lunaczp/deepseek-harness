@@ -49,7 +49,7 @@
 | [33-plan-mode.md](./33-plan-mode.md) | 计划模式 | `/plan`、提示词注入、`exit_plan_mode` 评审 |
 | [34-user-questions.md](./34-user-questions.md) | 用户问答 seam | `ask`/`askTimed`、历史写入、120s timed |
 | [35-commands.md](./35-commands.md) | 斜杠命令 | `ctx.commands`、`/plan` 等、command/run·done |
-| [36-goal.md](./36-goal.md) | 同会话 Goal | `ctx.goals`、工具、`/goal`、round-driver |
+| [36-goal.md](./36-goal.md) | 同会话 Goal | 生命周期、driver 触发、与 plan 对照 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议

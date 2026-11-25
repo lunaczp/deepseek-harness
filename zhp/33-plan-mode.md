@@ -110,6 +110,7 @@ exit_plan_mode
 | todo | 规划阶段禁；批准后实现跟踪 |
 | [user-questions](./34-user-questions.md) | `exit_plan_mode` 评审通道（阻塞 `ask`） |
 | [commands](./35-commands.md) | 有 `ctx.commands` 才注册 `/plan` |
+| [goal](./36-goal.md#7-与-plan-的区别) | 长期目标对象；与 plan 正交，可先后用 |
 | [14](./14-prompt-assembly.md) | `plan:policy` 段落注入 |
 
 ---

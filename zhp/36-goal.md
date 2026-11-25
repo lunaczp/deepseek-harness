@@ -4,7 +4,7 @@
 |---|---|
 | 状态 | 学习中（源码走读） |
 | 日期 | 2026-11-25 |
-| 基线 | `zhp@8b437ceb94` |
+| 基线 | `zhp@50e10f9617` |
 | 证据 | 源码；权威见 [`packages/goal/`](../packages/goal/README.zh.md)、[`goal` 包](../packages/goal/goal/README.zh.md)、[`docs/subsystems/goal.zh.md`](../docs/subsystems/goal.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
@@ -70,39 +70,119 @@ create/edit 可带附件 → 成功后再 steer 一条普通用户消息（附�
 - complete/blocked：也可在**当前 Goal Round**；`blocked` 默认连续 ≥3 获准 Round（`blockedAfterConsecutiveRounds`）
 - 持久 `paused` 的 resume 归人；模型 `resume` 会拒
 
-### 自动续跑（挂了 driver）
-
-agent **idle** + `active` + `armed` + 未满 `maxGoalRounds` → 排入 `<goal_round>`（goal 来源 user/message）→ 计一轮。
-额度耗尽 → `block`（`round-limit`）。恢复/fork **不会**自动 arm。
-
 配置：`defaultMaxGoalRounds` 默认 **256**（create 可覆盖）。
 
 ---
 
-## 4. 实现
+## 4. 生命周期
+
+### 两轴
+
+| 轴 | 值 | 是否持久 |
+|---|---|---|
+| **phase** | `active` / `paused` / `blocked` / `complete` | 是（`goal/change`） |
+| **activation** | `armed` / `disarmed` | **否**（恢复/fork/`agent/created` → disarmed） |
+
+无当前目标 = `get()` → `undefined`。
+
+### 持久 phase 流转
 
 ```text
-变更 → append goal/change（完整快照或 clear 墓碑）→ 投影折叠 → goal/changed
-roundsStarted ← 仅「获准进入步骤」的 goal 来源 user/message（连续 round）
-
-driver（idle）:
-  预留 roundsStarted+1 → inbox 排 goal_round
-  pre-step 校验 revision / 竞争人类输入
-  准入后才真正消耗 round
-
-tool-goal:
-  执行时查 turnBoundary + 人类权威 / 是否当前 goal round
-  自主 complete|blocked → 可 wrapup 结束物理轮次
+                    create（可替换已 complete）
+                         │
+                         ▼
+              ┌───── active ◄──── resume ─────┐
+              │         │                      │
+              │         │ pause                │
+              │         ▼                      │
+              │      paused ───────────────────┤
+              │         │                      │
+              │         │ block（仅从 active）   │
+              │         ▼                      │
+              │      blocked ──────────────────┘
+              │         │
+              │         │ complete（active|paused|blocked）
+              │         ▼
+              │      complete ──create──► 新 id 的 active
+              │
+              └── clear ──► 无当前目标（日志留 tombstone）
 ```
 
-要点：
+| 操作 | 从 → 到 | activation |
+|---|---|---|
+| **create** | 无 / 仅 `complete` 可被换 → `active` | **armed** |
+| **edit** | 任意当前；**不改 phase** | 保持原样 |
+| **pause** | `active` → `paused` | disarmed |
+| **resume** | `active`(已 disarmed) / `paused` / `blocked` → `active` | **armed**（须仍有 round 额度） |
+| **block** | 仅 `active` → `blocked` | disarmed |
+| **complete** | `active`\|`paused`\|`blocked` → `complete` | disarmed |
+| **clear** | 任意当前 → 无 | disarmed |
+| **disarm()** | 不改 phase | → disarmed（不写 revision） |
 
-1. **CAS**：变更带精确 `{ id, revision }`，陈旧拒绝。
-2. **activation 不持久**：新进程 / `agent/created` → disarmed。
-3. **严格回放**：非法 phase、revision/round 缺口 → 投影失败后服务拒访问。
-4. **goal ≠ 调度**：只挂 `dsh-goal` 只存状态；无人值守多轮需再挂 driver + tool-goal。
+未完成 goal **不能**被另一个 `create` 顶掉。每次获准变更 `revision++`，CAS 须带精确 `{ id, revision }`。
+
+`active + armed` → driver 可续；其它组合不自动续。实现：[`GoalService`](../packages/goal/goal/src/index.ts#L305)。
+
+---
+
+## 5. goal-round-driver：谁触发、怎么跑
+
+**没有人直接调用 driver API。** 组合挂载后 `apply(ctx)` 注册监听；**事件** → `requestDrive` → `drive()`。
+
+`ctx.on(...)` 不在 `apply` 顶层，而在 [`ctx.effect(function* () { … })` L261](../packages/goal/goal-round-driver/src/index.ts#L261) 内（易漏）。
+
+| 事件 | 作用 |
+|---|---|
+| **`agent/status` → idle** | 主触发：空闲后尝试排下一轮 |
+| **`goal/changed`** | create/resume 等后标检查点再驱动 |
+| **`agent/pre-step` 拒旧 round** | 清预留后重试 |
+| inbox / session 边 | 改 attempt 状态 |
+
+加载时对已有 agent **全部 disarm**；挂插件 ≠ 开续跑。
+
+可驱动条件：`phase === 'active'` ∧ `activation === 'armed'` ∧ idle ∧ 无竞争 inbox ∧（可选）子树空闲 ∧ 未满额。
+
+```text
+drive:
+  flush 检查点 → 预留 roundsStarted+1
+  → followup(<goal_round>, source:{kind:goal,…})
+  → claimed → pre-step 双检 → startsRequestSeries
+  → user/message 准入后才消耗 roundsStarted
+额度满 → block(round-limit)
+```
+
+先预留、后准入；人类插队 → competing / stale，自动 round 让行。
+
+---
+
+## 6. 实现（领域侧）
+
+```text
+变更 → append goal/change → 投影折叠 → goal/changed
+roundsStarted ← 仅获准进入步骤的 goal 来源 user/message
+tool-goal：执行时查权威；自主 complete|blocked 可 wrapup
+```
+
+要点：CAS；activation 不持久；严格回放；只挂 `dsh-goal` 不调度。
 
 入口：[`GoalService`](../packages/goal/goal/src/index.ts)、[`fold.ts`](../packages/goal/goal/src/fold.ts)、driver [`index.ts`](../packages/goal/goal-round-driver/src/index.ts)、[`tool-goal`](../packages/goal/tool-goal/src/index.ts)。
+
+---
+
+## 7. 与 Plan 的区别
+
+| | Plan（[33](./33-plan-mode.md)） | Goal（本篇） |
+|---|---|---|
+| **是什么** | 软协作模式：先探索再交计划给人审 | 持久完成目标：跨多轮记住要干成什么 |
+| **状态** | `plan/mode { active }` | phase + revision + rounds；另有 `armed/disarmed` |
+| **对人** | `/plan`；`exit_plan_mode` 评审 | `/goal` 生命周期 |
+| **对模型** | `plan:policy`；`exit_plan_mode` | `get/create/update_goal`；可选 `<goal_round>` |
+| **约束** | 文案软指引（工具仍在） | 状态机 + CAS；driver 按 armed 续 |
+| **调度** | 无 | 可选 round-driver |
+| **每会话** | 开/关模式 | **至多一个**当前 goal |
+
+可先后用（先 plan 定方案，再 goal 盯落地）；**不互相读写**。
+todo = 实现清单，与二者都不同。
 
 ---
 
@@ -110,7 +190,7 @@ tool-goal:
 
 | 模块 | 关系 |
 |---|---|
-| [33](./33-plan-mode.md) | 计划评审 vs 长期目标对象；可先后用 |
+| [33](./33-plan-mode.md) | 见上节对照 |
 | [35](./35-commands.md) | `/goal` 注册面 |
 | [29](./29-subagent.md) | 子 agent 不能 create/edit；driver 等后代 idle |
 | session 投影 | `goal` 单元 → Client 当前视图 |
@@ -127,4 +207,4 @@ tool-goal:
 
 1. [组 README](../packages/goal/README.zh.md) + [goal 使用](../packages/goal/goal/README.zh.md#use-this-package)
 2. [子系统](../docs/subsystems/goal.zh.md)
-3. driver / tool-goal / command-goal 各自 README「使用」节
+3. driver：[`apply` + `ctx.effect` L261](../packages/goal/goal-round-driver/src/index.ts#L261)；生命周期：[`GoalService` L305+](../packages/goal/goal/src/index.ts#L305)
