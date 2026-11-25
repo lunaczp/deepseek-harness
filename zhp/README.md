@@ -50,6 +50,7 @@
 | [34-user-questions.md](./34-user-questions.md) | 用户问答 seam | `ask`/`askTimed`、历史写入、120s timed |
 | [35-commands.md](./35-commands.md) | 斜杠命令 | `ctx.commands`、`/plan` 等、command/run·done |
 | [36-goal.md](./36-goal.md) | 同会话 Goal | 生命周期、driver 触发、与 plan 对照 |
+| [37-schedule.md](./37-schedule.md) | 定时任务 | Host schedule、墙钟触发、MAX_TIMER |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -87,6 +88,7 @@
 想弄清用户问答 / `ask`·timed / 历史写入 → `34`（计划评审对照 `33`，工具结果对照 `17`）。
 想弄清斜杠命令 / `ctx.commands` / command 生命周期 → `35`（`/plan` 对照 `33`，问答对照 `34`）。
 想弄清同会话 Goal / 工具·`/goal`·续跑 → `36`（命令对照 `35`，计划对照 `33`）。
+想弄清定时任务 / 墙钟触发 / setTimeout → `37`（Goal 对照 `36`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

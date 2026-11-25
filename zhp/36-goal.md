@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`packages/goal/`](../packages/goal/README.zh.md)、[`goal` 包](../packages/goal/goal/README.zh.md)、[`docs/subsystems/goal.zh.md`](../docs/subsystems/goal.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。斜杠命令 [35](./35-commands.md)；计划模式对照 [33](./33-plan-mode.md)；subagent [29](./29-subagent.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。斜杠命令 [35](./35-commands.md)；计划模式对照 [33](./33-plan-mode.md)；定时任务对照 [37](./37-schedule.md)；subagent [29](./29-subagent.md)。
 
 ## 一句话
 
