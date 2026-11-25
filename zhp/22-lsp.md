@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`lsp` 组](../packages/lsp/README.zh.md)、[`dsh-lsp`](../packages/lsp/lsp/README.zh.md)、[`lsp-stdio`](../packages/lsp/lsp-stdio/README.zh.md)、[`tool-lsp`](../packages/lsp/tool-lsp/README.zh.md)、[`docs/subsystems/lsp.zh.md`](../docs/subsystems/lsp.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Seam 用语 [19](./19-seam-and-service.md)；执行世界依赖 fs / subprocess → [21](./21-fs.md)、[17d](./17d-subprocess.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Seam 用语 [19](./19-seam-and-service.md)；执行世界依赖 fs / subprocess → [21](./21-fs.md)、[17d](./17d-subprocess.md)。后续主题：[23](./23-scope.md)、[24](./24-ptc.md)。
 
 ## 一句话
 

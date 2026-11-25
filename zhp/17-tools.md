@@ -13,7 +13,7 @@
 
 **`ctx.tools` 是作用域化注册表；native/PTC 执行器拥有批次；共享流水线做门禁与结算；agent-loop 只从助手消息抽出 `tool-call` 再 `execute`。**（源码）
 
-关联：[17b bash/shell 全链路与平台命名](./17b-bash-tool-flow.md)；[12](./12-session-implementation.md)（`tool/call` log-only / `tool/result` surface）；[14](./14-prompt-assembly.md)（schema 进 assemble）；[02](./02-request-lifecycle.md)。
+关联：[17b bash/shell 全链路与平台命名](./17b-bash-tool-flow.md)；[23](./23-scope.md)（按 scope 选执行器）；[24](./24-ptc.md)（Native/PTC 执行器与提示词）；[12](./12-session-implementation.md)（`tool/call` log-only / `tool/result` surface）；[14](./14-prompt-assembly.md)（schema 进 assemble）；[02](./02-request-lifecycle.md)。
 
 ---
 
@@ -122,11 +122,11 @@ tools.execute({ calls, agent, log:{turn,step}, toolSet, maxParallelToolCalls, si
 
 ## 还没搞懂
 
-1. PTC `run_code` 子调用与根 call 在同一流水线里的 `tool/ptc-dispatch` 边界。
+1. PTC 子调用与根 call 的 `tool/ptc-dispatch` 事件边界（概览已迁 [24](./24-ptc.md)；jsonl 配对仍待实测）。
 2. 本机一次真实 bash 的 jsonl 事件序（待实测，对照 [17b](./17b-bash-tool-flow.md)）。
 
 ## 读代码最短路径
 
 1. [tools README.zh](../packages/core/tools/README.zh.md) + [流水线图](../docs/tool-execution-pipeline.zh.md)
 2. `agent.ts` preStep / step 末尾 execute → `batch.ts` → `pipeline.ts`
-3. [17b](./17b-bash-tool-flow.md) 跟一条 bash
+3. [17b](./17b-bash-tool-flow.md) 跟一条 bash；交付模式看 [24](./24-ptc.md)
