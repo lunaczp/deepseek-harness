@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`permission-presets`](../packages/interaction/permission-presets/README.zh.md)、[`docs/subsystems/permission-presets.zh.md`](../docs/subsystems/permission-presets.zh.md)、[`sandbox`](../docs/subsystems/sandbox.zh.md)、审批 [30](./30-approval.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。审批闸门 [30](./30-approval.md)；沙箱实测 [03](./03-sandbox-and-permissions.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。审批闸门 [30](./30-approval.md)；沙箱 seam [32](./32-sandbox.md)；沙箱实测 [03](./03-sandbox-and-permissions.md)。
 
 ## 一句话
 
@@ -125,5 +125,5 @@
 ## 读代码最短路径
 
 1. [permission-presets README](../packages/interaction/permission-presets/README.zh.md) + [`set` / `current`](../packages/interaction/permission-presets/src/index.ts)
-2. [sandbox 子系统](../docs/subsystems/sandbox.zh.md) `SandboxMode`
+2. [sandbox 子系统](../docs/subsystems/sandbox.zh.md) `SandboxMode`；总览 [32](./32-sandbox.md)
 3. 审批消费 [30](./30-approval.md)

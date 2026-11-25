@@ -91,7 +91,7 @@ man page 原话：
 
 对"给任意 CLI 命令套自定义沙箱"，Apple 至今没有官方方案。这也是 Claude Code、Codex、Homebrew 等仍在使用它的原因。
 
-> 实现层（`confine`、四 runner 如何拼 argv、系统 CLI 入门）见 [17c](./17c-sandbox-local.md)；经 `ctx.fs` 的路径写围栏见 [21](./21-fs.md)。本篇只保留权限/边界实测。
+> 总览（策略 / 机制 / 升权 / 包地图）见 [32](./32-sandbox.md)；实现层（`confine`、四 runner 如何拼 argv、系统 CLI 入门）见 [17c](./17c-sandbox-local.md)；经 `ctx.fs` 的路径写围栏见 [21](./21-fs.md)。本篇只保留权限/边界实测。
 
 ## 6. 三平台后端
 
@@ -108,4 +108,4 @@ Windows 后端（`packages/sandbox/sandbox-windows-acl/`）用 `WRITE_RESTRICTED
 
 已知短板：NTFS 硬链接可别名到工作区外；只限写/删，不限读与网络；控制台隔离不可用。
 
-相关：一次性用户审批与 `sandbox_permissions` 扩权闸门见 [30](./30-approval.md)；权限预设与 `danger-full-access` 捆绑见 [31](./31-permission-presets.md)（机制层，非本篇实测）。
+相关：进程沙箱 seam 总览见 [32](./32-sandbox.md)；一次性用户审批与 `sandbox_permissions` 扩权闸门见 [30](./30-approval.md)；权限预设与 `danger-full-access` 捆绑见 [31](./31-permission-presets.md)（机制层，非本篇实测）。

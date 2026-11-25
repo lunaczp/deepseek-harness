@@ -9,13 +9,13 @@
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
 > **跳转**：`[…#Ln](../packages/…#Ln)` 在 Cursor 聊天 / GitHub 可点；侧边栏预览点不开（见 [05](./05-workspace-conventions.md)）。
-> **边界实测**（能写哪、setuid、SBPL 拒写文案）只写在 [03](./03-sandbox-and-permissions.md)；本篇写**怎么拼 argv / 怎么选平台后端**。
+> **边界实测**（能写哪、setuid、SBPL 拒写文案）只写在 [03](./03-sandbox-and-permissions.md)；seam / policy·升权 / 策略与机制见 [32](./32-sandbox.md)；本篇写**怎么拼 argv / 怎么选平台后端**。
 
 ## 一句话
 
 **`sandbox-local` 不自己 spawn：按平台选 runner → 用 `SandboxPolicy` 拼 profile → 返回 `runner + profile + '--' + 原 argv`；不可用则 `SANDBOX_UNAVAILABLE`（fail-closed，绝不退回裸 argv）。**（源码）
 
-关联：[17b](./17b-bash-tool-flow.md)（bash → `ctx.sandbox.confine`）；[17d](./17d-subprocess.md)（`confine` 之后的 `spawn`）；[21](./21-fs.md)（`fs-sandbox` 路径围栏，另一族）；[03](./03-sandbox-and-permissions.md)（权限实测）。
+关联：[32](./32-sandbox.md)（沙箱总览）；[17b](./17b-bash-tool-flow.md)（bash → `ctx.sandbox.confine`）；[17d](./17d-subprocess.md)（`confine` 之后的 `spawn`）；[21](./21-fs.md)（`fs-sandbox` 路径围栏，另一族）；[03](./03-sandbox-and-permissions.md)（权限实测）。
 
 ---
 
