@@ -48,7 +48,7 @@
 - [`llm/`](../packages/llm/)、[`shell/`](../packages/shell/)、[`subprocess/`](../packages/subprocess/)、[`fs/`](../packages/fs/)
 - [`sandbox/`](../packages/sandbox/)、[`ssh/`](../packages/ssh/)、[`terminal/`](../packages/terminal/)
 - [`subagent/`](../packages/subagent/)、[`team/`](../packages/team/)、[`jobs/`](../packages/jobs/)、[`workflow/`](../packages/workflow/)
-- [`web/`](../packages/web/)、[`skill/`](../packages/skill/)、[`lsp/`](../packages/lsp/)、[`mcp/`](../packages/mcp/)
+- [`web/`](../packages/web/)（[25](./25-web.md)）、[`skill/`](../packages/skill/)（[27](./27-skill.md)）、[`lsp/`](../packages/lsp/)（[22](./22-lsp.md)）、[`mcp/`](../packages/mcp/)
 - [`compaction/`](../packages/compaction/)、[`plan/`](../packages/plan/)、[`goal/`](../packages/goal/)、[`todo/`](../packages/todo/)、[`schedule/`](../packages/schedule/)
 
 **界面与集成**
