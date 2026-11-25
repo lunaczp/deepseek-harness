@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`plan-mode`](../packages/plan/plan-mode/README.zh.md)、[`docs/subsystems/plan.zh.md`](../docs/subsystems/plan.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。提示词段落 [14](./14-prompt-assembly.md)；工具 [17](./17-tools.md)；审批闸门对照 [30](./30-approval.md)；沙箱对照 [32](./32-sandbox.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。提示词段落 [14](./14-prompt-assembly.md)；工具 [17](./17-tools.md)；审批闸门对照 [30](./30-approval.md)；沙箱对照 [32](./32-sandbox.md)；评审通道 [34](./34-user-questions.md)。
 
 ## 一句话
 
@@ -108,7 +108,7 @@ exit_plan_mode
 |---|---|
 | [30](./30-approval.md) / [32](./32-sandbox.md) | 正交；要「计划期真不能写」另配 |
 | todo | 规划阶段禁；批准后实现跟踪 |
-| user-questions | `exit_plan_mode` 评审通道 |
+| [user-questions](./34-user-questions.md) | `exit_plan_mode` 评审通道（阻塞 `ask`） |
 | commands | 有 `ctx.commands` 才注册 `/plan` |
 | [14](./14-prompt-assembly.md) | `plan:policy` 段落注入 |
 
