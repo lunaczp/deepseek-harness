@@ -24,7 +24,7 @@
 |---|---|---|
 | Definition | [`dsh-ptc-runtime`](../packages/ptc-runtime/ptc-runtime/) | 抽象 `PtcRuntime` → `ctx.ptcRuntime`：`resolve` / `run` 词汇 |
 | Provider | [`dsh-ptc-runtime-node`](../packages/ptc-runtime/ptc-runtime-node/)（base 默认）；实验 [`ptc-runtime-python`](../packages/experimental/ptc-runtime-python/) | 真正起进程、求值、沙箱/状态 |
-| Consumer | [`dsh-tool-executor-ptc`](../packages/core/tool-executor-ptc/)、[`dsh-workflow-ptc`](../packages/workflow/) 等 | 工具绑定 / workflow；**运行时不认识 Session 工具名** |
+| Consumer | [`dsh-tool-executor-ptc`](../packages/core/tool-executor-ptc/)、[`dsh-workflow-ptc`](../packages/workflow/) 等 | 工具绑定 / workflow（[28](./28-workflow.md)）；**运行时不认识 Session 工具名** |
 
 权威分层：[ptc-runtime 组 README](../packages/ptc-runtime/README.zh.md)。
 

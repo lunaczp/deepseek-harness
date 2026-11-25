@@ -41,6 +41,7 @@
 | [25-web.md](./25-web.md) | web | `ctx.web`、search/fetch 提供方、`web_search`/`web_fetch` |
 | [26-typert.md](./26-typert.md) | Typert | 类型图 / Remote / Zod / Host↔Client 打包与进程 |
 | [27-skill.md](./27-skill.md) | skill | `ctx.skills`、多 Provider、filesystem 发现与首次 list |
+| [28-workflow.md](./28-workflow.md) | workflow | 模型写 JS 编排、`workflowEngine`、PTC、真实调用例 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -69,6 +70,7 @@
 想弄清 web 搜索/抓取 seam → `25`（勿与 web-app GUI 混淆）。
 想弄清 Typert / Remote / Client 打包与 Host 进程 → `26`（仓库地图开放问对照 `08`）。
 想弄清 skill seam / 多 Provider / 首次发现 → `27`。
+想弄清 workflow / 模型写 JS / PTC 与真实调用例 → `28`（PTC 基板对照 `24`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
