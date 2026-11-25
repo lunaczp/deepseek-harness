@@ -8,7 +8,7 @@
 | 证据 | 源码；快照 [`advanced-toolchain`](../snapshots/session/advanced-toolchain/session.v2.jsonl)、[`workflow-run`](../snapshots/session/workflow-run/session.v3.jsonl)；权威见 [`packages/workflow/`](../packages/workflow/README.zh.md)、[`docs/subsystems/workflow.zh.md`](../docs/subsystems/workflow.zh.md)、[`docs/capability-seams.zh.md`](../docs/capability-seams.zh.md)、[沙箱复用 Note](../.agents/notes/implemented/architecture/2026-09-13-workflow-ptc-sandbox-reuse.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Seam [19](./19-seam-and-service.md)；PTC [24](./24-ptc.md)；工具流水线 [17e](./17e-tool-pipeline.md)；jobs [18](./18-jobs.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Seam [19](./19-seam-and-service.md)；PTC [24](./24-ptc.md)；工具流水线 [17e](./17e-tool-pipeline.md)；jobs [18](./18-jobs.md)；subagent 扇出 [29](./29-subagent.md)。
 
 ## 一句话
 
@@ -29,7 +29,7 @@
 | 易混 | 实际 |
 |---|---|
 | skill / Office「workflows」 | 说明书；≠ 本 seam |
-| subagent | 1–2 次委派用 plain subagent；大量扇出/多阶段用 workflow |
+| subagent | 1–2 次委派用 plain subagent（[29](./29-subagent.md)）；大量扇出/多阶段用 workflow |
 | goal / Ralph | Goal 管会话长跑；Ralph 固定 fresh-agent 循环，消费本 seam，默认不进产品组合 |
 
 ---
