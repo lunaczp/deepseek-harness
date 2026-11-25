@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`user-questions`](../packages/interaction/user-questions/README.zh.md)、[`tool-ask-user`](../packages/interaction/tool-ask-user/README.zh.md)、[`docs/subsystems/user-questions.zh.md`](../docs/subsystems/user-questions.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。工具结果时机 [17](./17-tools.md)；审批对照 [30](./30-approval.md)；计划评审 [33](./33-plan-mode.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。工具结果时机 [17](./17-tools.md)；审批对照 [30](./30-approval.md)；计划评审 [33](./33-plan-mode.md)；斜杠命令对照 [35](./35-commands.md)。
 
 ## 一句话
 

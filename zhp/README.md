@@ -48,6 +48,7 @@
 | [32-sandbox.md](./32-sandbox.md) | 进程沙箱 seam | policy/confine、升权、策略与机制分离 |
 | [33-plan-mode.md](./33-plan-mode.md) | 计划模式 | `/plan`、提示词注入、`exit_plan_mode` 评审 |
 | [34-user-questions.md](./34-user-questions.md) | 用户问答 seam | `ask`/`askTimed`、历史写入、120s timed |
+| [35-commands.md](./35-commands.md) | 斜杠命令 | `ctx.commands`、`/plan` 等、command/run·done |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -83,6 +84,7 @@
 想弄清进程沙箱 seam / policy·confine / 策略与机制 → `32`（argv 拼装对照 `17c`，实测对照 `03`）。
 想弄清计划模式 / `/plan` / `exit_plan_mode` → `33`（提示词对照 `14`，审批对照 `30`）。
 想弄清用户问答 / `ask`·timed / 历史写入 → `34`（计划评审对照 `33`，工具结果对照 `17`）。
+想弄清斜杠命令 / `ctx.commands` / command 生命周期 → `35`（`/plan` 对照 `33`，问答对照 `34`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

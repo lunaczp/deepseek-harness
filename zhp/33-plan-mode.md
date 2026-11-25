@@ -109,7 +109,7 @@ exit_plan_mode
 | [30](./30-approval.md) / [32](./32-sandbox.md) | 正交；要「计划期真不能写」另配 |
 | todo | 规划阶段禁；批准后实现跟踪 |
 | [user-questions](./34-user-questions.md) | `exit_plan_mode` 评审通道（阻塞 `ask`） |
-| commands | 有 `ctx.commands` 才注册 `/plan` |
+| [commands](./35-commands.md) | 有 `ctx.commands` 才注册 `/plan` |
 | [14](./14-prompt-assembly.md) | `plan:policy` 段落注入 |
 
 ---
