@@ -13,7 +13,7 @@
 
 **`ctx.tools` 是作用域化注册表；native/PTC 执行器拥有批次；共享流水线做门禁与结算；agent-loop 只从助手消息抽出 `tool-call` 再 `execute`。**（源码）
 
-关联：[17b bash/shell 全链路与平台命名](./17b-bash-tool-flow.md)；[23](./23-scope.md)（按 scope 选执行器）；[24](./24-ptc.md)（Native/PTC 执行器与提示词）；[12](./12-session-implementation.md)（`tool/call` log-only / `tool/result` surface）；[14](./14-prompt-assembly.md)（schema 进 assemble）；[02](./02-request-lifecycle.md)。
+关联：[17b bash/shell 全链路与平台命名](./17b-bash-tool-flow.md)；[17e](./17e-tool-pipeline.md)（流水线设计 / 调用处 / 批次并发）；[23](./23-scope.md)（按 scope 选执行器）；[24](./24-ptc.md)（Native/PTC 执行器与提示词）；[12](./12-session-implementation.md)（`tool/call` log-only / `tool/result` surface）；[14](./14-prompt-assembly.md)（schema 进 assemble）；[02](./02-request-lifecycle.md)。
 
 ---
 
@@ -97,7 +97,7 @@ tools.execute({ calls, agent, log:{turn,step}, toolSet, maxParallelToolCalls, si
 
 ---
 
-## 4. 流水线策略点
+## 4. 流水线策略点（摘要）
 
 | 事件 / API | 作用 |
 |---|---|
@@ -107,9 +107,7 @@ tools.execute({ calls, agent, log:{turn,step}, toolSet, maxParallelToolCalls, si
 | `tools/post-execute` | 检查 / 替换 / 附加 context |
 | `tools/result` | 只观测冻结终态 |
 
-图：[tool-execution-pipeline.zh.md](../docs/tool-execution-pipeline.zh.md)。
-
-并发：`isConcurrencySafe === true` 才可并行；否则 exclusive 屏障（[`pipeline.ts` `executionMode`](../packages/core/tools/src/pipeline.ts)）。
+设计原因、阶段不变量、生产调用处、批次 vs 并行、`isConcurrencySafe` → **[17e](./17e-tool-pipeline.md)**。图：[tool-execution-pipeline.zh.md](../docs/tool-execution-pipeline.zh.md)。
 
 ---
 
@@ -127,6 +125,6 @@ tools.execute({ calls, agent, log:{turn,step}, toolSet, maxParallelToolCalls, si
 
 ## 读代码最短路径
 
-1. [tools README.zh](../packages/core/tools/README.zh.md) + [流水线图](../docs/tool-execution-pipeline.zh.md)
+1. [tools README.zh](../packages/core/tools/README.zh.md) + [流水线图](../docs/tool-execution-pipeline.zh.md) + [17e](./17e-tool-pipeline.md)
 2. `agent.ts` preStep / step 末尾 execute → `batch.ts` → `pipeline.ts`
 3. [17b](./17b-bash-tool-flow.md) 跟一条 bash；交付模式看 [24](./24-ptc.md)
