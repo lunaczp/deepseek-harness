@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`commands`](../packages/interaction/commands/README.zh.md)、[`docs/subsystems/commands.zh.md`](../docs/subsystems/commands.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。scope [23](./23-scope.md)；计划 `/plan` [33](./33-plan-mode.md)；用户问答对照 [34](./34-user-questions.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。scope [23](./23-scope.md)；计划 `/plan` [33](./33-plan-mode.md)；用户问答对照 [34](./34-user-questions.md)；`/goal` 领域 [36](./36-goal.md)。
 
 ## 一句话
 
@@ -71,7 +71,7 @@ list(agent) / find(agent, name) 做发现
 | plan | `plan-mode` |
 | compact | `command-compact` |
 | permission | `permission-presets` |
-| goal | `command-goal` |
+| goal | [`command-goal`](./36-goal.md) |
 | feedback / export | 对应 command 包 |
 
 base：[`cordis.patch.yml` L321](../packages/bundle/base/cordis.patch.yml#L321)。
