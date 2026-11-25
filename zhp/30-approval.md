@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`docs/subsystems/approval.zh.md`](../docs/subsystems/approval.zh.md)、[`user-approval`](../packages/interaction/user-approval/README.zh.md)、[approval seam Note](../.agents/notes/implemented/feature/2026-07-06-approval-seam.md)、[`docs/tool-execution-pipeline.zh.md`](../docs/tool-execution-pipeline.zh.md)、[`hooks-codex`](../packages/experimental/hooks-codex/README.zh.md)、[`event-producer-consumer`](../docs/event-producer-consumer.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。流水线 [17e](./17e-tool-pipeline.md)；沙箱实测 [03](./03-sandbox-and-permissions.md)；Typert 转发 [26](./26-typert.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。流水线 [17e](./17e-tool-pipeline.md)；沙箱实测 [03](./03-sandbox-and-permissions.md)；Typert 转发 [26](./26-typert.md)；权限预设捆绑 [31](./31-permission-presets.md)。
 
 ## 一句话
 
@@ -143,7 +143,7 @@ Codex **PreToolUse** 桥只映射 **deny 或 `next()`**，**不把 hook 的 ask 
 
 ## 8. 组合与无人值守
 
-- base：`user-approval` + `permission-presets`；`danger-full-access` 时常默认 approval `never`
+- base：`user-approval` + `permission-presets`（[31](./31-permission-presets.md)）；`danger-full-access` 时常默认 approval `never`
 - web：`ui-approval`
 - headless：常 `never` 或无 live 应答 → `unavailable` → 工具 deny
 - 进程内子 agent：策略常 pin `never`（上抛父会话为延期）
@@ -152,7 +152,7 @@ Codex **PreToolUse** 桥只映射 **deny 或 `next()`**，**不把 hook 的 ask 
 
 ## 还没搞懂
 
-1. permission preset 与 sandbox mode 完整字段对照。
+1. ~~permission preset 与 sandbox mode 完整字段对照。~~ → [31](./31-permission-presets.md)
 2. UI「Always allow」与 core 仅 `allowed-once` 的产品差距。
 3. Pending approval 不进 checkpoint / 恢复不重问。
 4. 本机一次挂 hooks-codex 的实跑对照。

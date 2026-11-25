@@ -108,4 +108,4 @@ Windows 后端（`packages/sandbox/sandbox-windows-acl/`）用 `WRITE_RESTRICTED
 
 已知短板：NTFS 硬链接可别名到工作区外；只限写/删，不限读与网络；控制台隔离不可用。
 
-相关：一次性用户审批与 `sandbox_permissions` 扩权闸门见 [30](./30-approval.md)（机制层，非本篇实测）。
+相关：一次性用户审批与 `sandbox_permissions` 扩权闸门见 [30](./30-approval.md)；权限预设与 `danger-full-access` 捆绑见 [31](./31-permission-presets.md)（机制层，非本篇实测）。

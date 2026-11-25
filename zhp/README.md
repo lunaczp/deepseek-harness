@@ -44,6 +44,7 @@
 | [28-workflow.md](./28-workflow.md) | workflow | 模型写 JS 编排、`workflowEngine`、PTC、真实调用例 |
 | [29-subagent.md](./29-subagent.md) | subagent | 委派缝、`startActivation`、spawn/fork、控制工具 |
 | [30-approval.md](./30-approval.md) | 审批 | `ctx.approval`、Host 闸门、pre-execute、Codex hook 例 |
+| [31-permission-presets.md](./31-permission-presets.md) | 权限预设 | 多条捆绑表、写通旋钮、`danger-full-access` |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -75,6 +76,7 @@
 想弄清 workflow / 模型写 JS / PTC 与真实调用例 → `28`（PTC 基板对照 `24`）。
 想弄清 subagent 委派 / spawn·fork / 控制工具 → `29`（workflow 扇出对照 `28`）。
 想弄清用户审批 / Host 闸门 / pre-execute / hook 桥 → `30`（流水线对照 `17e`，沙箱实测对照 `03`）。
+想弄清权限预设捆绑 / danger-full-access → `31`（审批对照 `30`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
