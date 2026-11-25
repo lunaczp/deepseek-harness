@@ -38,7 +38,7 @@
 prepare
   参数快照+冻结 · 铸 token · 已 abort → 跳过策略
   tools/pre-execute → allow | deny | ask | cancel
-  ask → ctx.approval（allowed-once 才过）
+  ask → ctx.approval（allowed-once 才过；深读 [30](./30-approval.md)）
   tools.guard() 单调拒绝（不能再被 allow 救回）
   → dispatch | 早退结果
 

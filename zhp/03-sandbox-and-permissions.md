@@ -107,3 +107,5 @@ man page 原话：
 Windows 后端（`packages/sandbox/sandbox-windows-acl/`）用 `WRITE_RESTRICTED` 令牌 + 能力 SID + Low 完整性标签。**不选 AppContainer 的原因**：AppContainer 令牌没有环境读权限，每条可读路径都要预先授权，与"随便读"的模型冲突。
 
 已知短板：NTFS 硬链接可别名到工作区外；只限写/删，不限读与网络；控制台隔离不可用。
+
+相关：一次性用户审批与 `sandbox_permissions` 扩权闸门见 [30](./30-approval.md)（机制层，非本篇实测）。
