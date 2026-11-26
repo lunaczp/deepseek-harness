@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`packages/schedule/`](../packages/schedule/README.zh.md)、[`schedule` 包](../packages/schedule/schedule/README.zh.md)、[`docs/subsystems/schedule.zh.md`](../docs/subsystems/schedule.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Goal 续跑对照 [36](./36-goal.md)；斜杠命令 [35](./35-commands.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Goal 续跑对照 [36](./36-goal.md)；斜杠命令 [35](./35-commands.md)；任务落盘经 storage-domain 对照 [45](./45-storage.md)。
 
 ## 一句话
 

@@ -7,7 +7,7 @@
 | 基线 | `zhp@6ad34ffb60` |
 | 证据 | 源码；[glossary · capability-seam](../docs/glossary.md)、[architecture](../docs/architecture.md)、[capability-seams.zh.md](../docs/capability-seams.zh.md)、[cordis-primer.zh.md](../docs/cordis-primer.zh.md) |
 
-> **跳转**见 [05](./05-workspace-conventions.md)。Plugin 形态见 [20](./20-plugin-and-service.md)；jobs 实例见 [18](./18-jobs.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Plugin 形态见 [20](./20-plugin-and-service.md)；jobs 实例见 [18](./18-jobs.md)；storage 能力 seam 例见 [45](./45-storage.md)。
 
 ## 一句话
 
