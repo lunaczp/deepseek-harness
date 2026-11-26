@@ -36,7 +36,7 @@
 | **是** | 开发链路：`pnpm run dev:web`（Host + tsdown watch）；watch 打完 sibling chunk 再 stamp 入口 |
 | **不是** | 生产部署功能；生产吃静态产物（fallback → frontend-static），无 rebuild watcher |
 | **不是** | 组件级热替换：重载 = **整插件 fiber** 卸挂，**组件状态丢**；Session / 连接可保留 |
-| **不是** | `/api/remote.mux`（那是 Gateway 流式 Remote 多路 WS，业务实时流） |
+| **不是** | `/api/remote.mux`（Gateway 流式 Remote 多路 WS → [40](./40-api-gateway.md)） |
 
 模型看不到新输入输出（无新 session 事件专为 HMR）。
 

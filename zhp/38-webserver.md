@@ -55,7 +55,7 @@ pathname
 | 路径 / 席位 | 谁认领 |
 |---|---|
 | `/api`（一元 Remote POST 等） | Connection / Gateway 桥 |
-| `/api/remote.mux`（upgrade） | API Gateway 流式 mux → 细节见 Gateway README；学习笔记未单开 |
+| `/api/remote.mux`（upgrade） | API Gateway 流式 mux → [40](./40-api-gateway.md) |
 | `/plugins/events`（SSE） | [`client-hmr`](./39-hmr.md) |
 | **fallback** | [`host-frontend-static`](../packages/host/frontend-static/src/index.ts#L152) → SPA dist |
 

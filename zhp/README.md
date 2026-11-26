@@ -53,6 +53,7 @@
 | [37-schedule.md](./37-schedule.md) | 定时任务 | Host schedule、墙钟触发、MAX_TIMER |
 | [38-webserver.md](./38-webserver.md) | Host webserver | exact→prefix→fallback、SPA 席位 |
 | [39-hmr.md](./39-hmr.md) | Client HMR | 开发态 poll + SSE、整插件重载 |
+| [40-api-gateway.md](./40-api-gateway.md) | API Gateway | Remote 分派、mux、HTTP Upgrade |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -93,6 +94,7 @@
 想弄清定时任务 / 墙钟触发 / setTimeout → `37`（Goal 对照 `36`）。
 想弄清 Host HTTP 载体 / 路由匹配 / SPA fallback → `38`（启动对照 `07`，Typert 对照 `26`）。
 想弄清 Client HMR / 开发热重载 / 与 Host dsh-hmr 区别 → `39`（webserver 对照 `38`）。
+想弄清 API Gateway / Remote 分派 / `/api/remote.mux` / HTTP Upgrade → `40`（Typert 对照 `26`，webserver 对照 `38`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

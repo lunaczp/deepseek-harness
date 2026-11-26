@@ -71,7 +71,7 @@ ctx.remote.goals.get(sessionId)
      → 结果回传（descriptor 不走 wire）
 ```
 
-Gateway 一元调用核心：[`api/gateway` `invoke` / `Reflect.apply`](../packages/api/gateway/src/index.ts#L424)。
+Gateway 一元调用核心：[`api/gateway` `invoke` / `Reflect.apply`](../packages/api/gateway/src/index.ts#L424)；学习笔记 [40](./40-api-gateway.md)。
 
 ---
 
