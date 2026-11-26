@@ -54,6 +54,8 @@
 | [38-webserver.md](./38-webserver.md) | Host webserver | exact→prefix→fallback、SPA 席位 |
 | [39-hmr.md](./39-hmr.md) | Client HMR | 开发态 poll + SSE、整插件重载 |
 | [40-api-gateway.md](./40-api-gateway.md) | API Gateway | Remote 分派、mux、HTTP Upgrade |
+| [41-web-client.md](./41-web-client.md) | Web Client 组织 | 实体→Controller→client→ui；Workspace 竖切 |
+| [41b-web-client-slots.md](./41b-web-client-slots.md) | Slot + React | 账本/inject、Outlet、`#root` 外壳 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -95,6 +97,7 @@
 想弄清 Host HTTP 载体 / 路由匹配 / SPA fallback → `38`（启动对照 `07`，Typert 对照 `26`）。
 想弄清 Client HMR / 开发热重载 / 与 Host dsh-hmr 区别 → `39`（webserver 对照 `38`）。
 想弄清 API Gateway / Remote 分派 / `/api/remote.mux` / HTTP Upgrade → `40`（Typert 对照 `26`，webserver 对照 `38`）。
+想弄清 Web Client 前后端分包 / Workspace 竖切 → `41`（Gateway 对照 `40`）；Slot / React / `#root` → `41b`。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
