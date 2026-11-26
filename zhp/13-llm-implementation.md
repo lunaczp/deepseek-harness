@@ -8,6 +8,7 @@
 | 证据 | 源码；权威文档见 `packages/llm/README.md`、`docs/subsystems/llm-streaming.md` |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
+> API key 按操作 resolve／凭据引用对照 [48](./48-credentials.md)。
 
 ## 一句话
 

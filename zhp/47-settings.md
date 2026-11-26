@@ -8,7 +8,7 @@
 | 证据 | 源码与文档；权威见 [`docs/subsystems/settings.zh.md`](../docs/subsystems/settings.zh.md)、[`packages/settings/settings/`](../packages/settings/settings/README.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Loader／启动 [10](./10-cordis-boot-loader.md)；非会话 KV 对照 [45](./45-storage.md)（settings **不是** storage）；Remote／Gateway [26](./26-typert.md)／[40](./40-api-gateway.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Loader／启动 [10](./10-cordis-boot-loader.md)；非会话 KV 对照 [45](./45-storage.md)（settings **不是** storage）；凭据值对照 [48](./48-credentials.md)；Remote／Gateway [26](./26-typert.md)／[40](./40-api-gateway.md)。
 
 ## 一句话
 
@@ -102,7 +102,7 @@ entry + volatileForm
 
 1. config-editor 文件锁／HMR 队列与 settings 写入的时序对照。
 2. 某插件 `configure({ auto: false })` + 自建设置卡的完整竖切（cookbook）。
-3. credentials Remote 与 settings 同页协作细节（另篇）。
+3. credentials 同页协作见 [48](./48-credentials.md)。
 
 ## 读代码最短路径
 
