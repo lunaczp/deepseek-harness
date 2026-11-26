@@ -154,4 +154,4 @@ goal/lib/typert.remote-client.js
 1. [typert 组](../packages/typert/README.zh.md) + [Remote Note](../.agents/notes/implemented/architecture/2026-08-02-typert-remote-method-calls.zh.md)
 2. Host：[`goal/.../index.ts` `@Remote`](../packages/goal/goal/src/index.ts) → 打开 `lib/typert.remote-client.d.ts`
 3. Client：[`api-remotes` `$mount`](../packages/api/remotes/src/client/index.ts) → [`ui-goal`](../packages/client/ui-goal/src/client/index.ts)
-4. 载体：[webserver](../packages/host/webserver/README.zh.md) + [frontend-static](../packages/host/frontend-static/README.zh.md)；Desktop：[apps/desktop/README.zh.md](../apps/desktop/README.zh.md)
+4. 载体：[webserver](../packages/host/webserver/README.zh.md) + [frontend-static](../packages/host/frontend-static/README.zh.md)；学习笔记 [38](./38-webserver.md)；Desktop：[apps/desktop/README.zh.md](../apps/desktop/README.zh.md)
