@@ -61,6 +61,7 @@
 | [44-host-client-dual-face.md](./44-host-client-dual-face.md) | Host/Client 双面 | 同库双树、Typert 边界、与 Java/Next 等对比 |
 | [45-storage.md](./45-storage.md) | Storage / domain | 非会话 KV、hub／后端／domain、与 BFF 对照 |
 | [46-workspace.md](./46-workspace.md) | Workspace 实体 | 注册表、两次写恢复、会话归属、非破坏删除 |
+| [47-settings.md](./47-settings.md) | Settings 表单 | volatile Config、revision、脱敏、非 storage |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -108,6 +109,7 @@
 想弄清 Host/Client 双面同库为何拆、与 Java/Next 等对比 → `44`（竖切对照 `41`，Typert 对照 `26`，Gateway 对照 `40`）。
 想弄清非会话存储 / storage-domain / 与 session 日志边界 → `45`（Workspace 对照 `41`，session 对照 `12`，schedule 对照 `37`）。
 想弄清 Workspace 注册表 / bootstrap / 两次写恢复 / 会话归属 → `46`（Web 竖切对照 `41`，落盘对照 `45`，session 对照 `12`）。
+想弄清插件设置表单 / volatile / 脱敏 / 与 storage 边界 → `47`（Loader 对照 `10`，落盘对照 `45`，Remote 对照 `40`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

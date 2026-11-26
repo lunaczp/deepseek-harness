@@ -8,7 +8,7 @@
 | 证据 | 源码与文档；权威见 [`docs/subsystems/storage.zh.md`](../docs/subsystems/storage.zh.md)、[`packages/storage/`](../packages/storage/README.zh.md)、[领域 KV Note](../.agents/notes/proposed/architecture/2026-07-24-domain-kv-storage-and-workspace.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。与会话日志对照 [12](./12-session-implementation.md)；seam [19](./19-seam-and-service.md)；Workspace 竖切消费方 [41](./41-web-client.md)；schedule [37](./37-schedule.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。与会话日志对照 [12](./12-session-implementation.md)；seam [19](./19-seam-and-service.md)；Workspace 竖切消费方 [41](./41-web-client.md)；schedule [37](./37-schedule.md)；插件设置表单（非本栈）对照 [47](./47-settings.md)。
 
 ## 一句话
 
