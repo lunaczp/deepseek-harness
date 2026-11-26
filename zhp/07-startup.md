@@ -91,12 +91,12 @@
 
 1. **Loader 如何应用 patches**：`cordis-plugin-include` 的 insert / override / disable 具体语义。
 2. `PluginPackages` **与 runtime resolution**：为什么不用普通 workspace 依赖解析？
-3. `window.__DSH_BOOT__`：client-modules 如何扫描与注入（webserver index-inject 对照 [38](./38-webserver.md)）。
-4. Host `dsh-hmr` 改 Node 插件行 vs Client HMR 改浏览器 bundle 的对照实测（概念见 [39](./39-hmr.md)）。
+3. Host `dsh-hmr` 改 Node 插件行 vs Client HMR 改浏览器 bundle 的对照实测（概念见 [39](./39-hmr.md)）。
+4. bootstrap vs application combo 在 Network 面板的体积对照（加载模型见 [42](./42-client-modules.md)）。
 
 ## 相关
 
 - Cordis 官方 CLI 的 Loader/Include 最小链：[zhp/10-cordis-boot-loader.md](./10-cordis-boot-loader.md)。
 - HTTP 载体：[zhp/38-webserver.md](./38-webserver.md)；Typert / 同进程 Host：[zhp/26-typert.md](./26-typert.md)；仓库地图 [zhp/08-repo-layout.md](./08-repo-layout.md)。
-- Client 开发热重载：[zhp/39-hmr.md](./39-hmr.md)。
+- Client 开发热重载：[zhp/39-hmr.md](./39-hmr.md)；浏览器插件图 / `__DSH_BOOT__`：[zhp/42-client-modules.md](./42-client-modules.md)。
 - 链接写法：[zhp/05-workspace-conventions.md](./05-workspace-conventions.md)（标签用仓库根相对路径，避免 `index.ts:738` 被误解析）。

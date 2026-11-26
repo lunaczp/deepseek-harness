@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`packages/client/hmr/`](../packages/client/hmr/README.zh.md)、[`packages/client/modules/`](../packages/client/modules/) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。HTTP 载体对照 [38](./38-webserver.md)；启动树对照 [07](./07-startup.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。HTTP 载体对照 [38](./38-webserver.md)；启动树对照 [07](./07-startup.md)；插件图 / `/plugins` 对照 [42](./42-client-modules.md)。
 
 ## 一句话
 
@@ -89,7 +89,7 @@ Host 每 pollIntervalMs（默认 500）stat 各图行的 client bundle
 ## 还没搞懂
 
 1. Host `dsh-hmr` 与 client-hmr 同时开着时，改一个 Host 插件 vs 改一个 Client 插件的可见边界实测。
-2. `clientModules.rebuilt` → entries.reload 在 [`modules/src/index.ts`](../packages/client/modules/src/index.ts) 内的精确状态机。
+2. `clientModules.rebuilt` → entries.reload 精确状态机（图/加载总览见 [42](./42-client-modules.md)）。
 3. Electron / 非页面载体是否挂同一套 SSE（文档称主要服务 Web SSE 路径）。
 
 ## 读代码最短路径
