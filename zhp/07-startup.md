@@ -15,10 +15,10 @@
 
 ## 1. 入口
 
-[`bin.ts`](../apps/cli/src/bin.ts)：
+[`apps/cli/src/bin.ts`](../apps/cli/src/bin.ts)：
 
 1. `parseDshArgs(argv)` 判定模式：`profile` / `plugin` / `dump-config` / `dump-config-schema`；
-2. `profile` 模式动态 import [`profile-boot.ts`](../apps/cli/src/profile-boot.ts) 并调 `runProfile()`；
+2. `profile` 模式动态 import [`apps/cli/src/profile-boot.ts`](../apps/cli/src/profile-boot.ts) 并调 `runProfile()`；
 3. `StartupError` → 写诊断日志、退出码 1。
 
 `loadLayeredEnv('dsh')` 把 `.env` 各层冻成不可变快照，之后所有插件读同一份，而不是实时 `process.env`。
@@ -46,18 +46,20 @@
 
 ## 3. boot() 的五步
 
+入口：[`packages/boot/app-boot/src/index.ts#L1200`](../packages/boot/app-boot/src/index.ts#L1200)（`boot`）。
+
 1. `new Context()`，provide `dshHomePath`；
 2. `plugin(Loader)`；
 3. `prepare(hostCtx)`：provide `profileContext`、launch environment 快照、`PluginPackages`、`cmdline`（args / exit / ready）；
-4. `mountRootInclude()`（[app-boot/index.ts:738](../packages/boot/app-boot/src/index.ts#L738)）：注册 `cordis:include`，以 profile 的空 `cordis.yml` 为根，挂上补丁层；
-5. `loader.await()` 等整棵树激活 → `auditStartupEntries`：**必需插件未激活即 `StartupError`**。
+4. [`mountRootInclude()`](../packages/boot/app-boot/src/index.ts#L738)：注册 `cordis:include`，以 profile 的空 `cordis.yml` 为根，挂上补丁层；
+5. `loader.await()` 等整棵树激活 → [`auditStartupEntries`](../packages/boot/app-boot/src/index.ts#L1153)：**必需插件未激活即 `StartupError`**。
 
 实测例子：本机 15:47 那次启动就是第 5 步失败的——`client-modules` 报 "64 client packages failed to compose: client bundles not found; run `pnpm run build` before launch"，并写出 1.3MB 的 `startup-*.log`。
 
 ## 4. 树的内容
 
-- **[base bundle](../packages/bundle/base/cordis.patch.yml)**：timer、HMR、llm、session、tools、sandbox 等公共底座；
-- **[web bundle](../packages/bundle/web-app/cordis.patch.yml)**：覆盖 `system-prompt` 的 persona、`session-query`、插入 `webserver`、`host-frontend-static`、`api/*-controller`、以及一长串 `client/*` 浏览器插件。
+- **[base bundle](../packages/bundle/base/cordis.patch.yml)**（`packages/bundle/base/cordis.patch.yml`）：timer、HMR、llm、session、tools、sandbox 等公共底座；
+- **[web bundle](../packages/bundle/web-app/cordis.patch.yml)**（`packages/bundle/web-app/cordis.patch.yml`）：覆盖 `system-prompt` 的 persona、`session-query`、插入 `webserver`、`host-frontend-static`、`api/*-controller`、以及一长串 `client/*` 浏览器插件。
 
 行字段：`id`、`name`、`config`、`disabled`。`disabled` 可以是 `!!js` 表达式，按 `ctx.get('profileContext')` 判断，因此同一份 bundle 同时服务 web 与 desktop。**行序不代表加载顺序**，激活由服务依赖驱动。
 
@@ -65,10 +67,10 @@
 
 ## 5. 参数到端口
 
-1. `web-startup` 插件（`inject: ['cmdlineArgs']`）解析 `--host` / `--port` / `--no-open` / `--public-url` / TLS，provide 成 `webStartup` 服务；
-2. `webserver` 插件（[webserver/index.ts:566](../packages/host/webserver/src/index.ts#L566)）注入它，`createServer(listener)` → `server.listen(port, host)` → 记录实际端口（`0` 由系统分配）；
-3. `host-frontend-static` 提供前端 dist；
-4. `client-modules` 扫描浏览器插件，生成 `window.__DSH_BOOT__`；
+1. `web-startup`（[`packages/bundle/web-app/src/startup.ts`](../packages/bundle/web-app/src/startup.ts)，`inject: ['cmdlineArgs']`）解析 `--host` / `--port` / `--no-open` / `--public-url` / TLS，provide 成 `webStartup` 服务；
+2. `webserver`（[`packages/host/webserver/src/index.ts`](../packages/host/webserver/src/index.ts)）：[`Service.init` L528](../packages/host/webserver/src/index.ts#L528) 里 [`createServer` L566](../packages/host/webserver/src/index.ts#L566) → [`listen` L621](../packages/host/webserver/src/index.ts#L621) → 记录实际端口（`0` 由系统分配）；
+3. `host-frontend-static`（[`packages/host/frontend-static/src/index.ts`](../packages/host/frontend-static/src/index.ts)）认领 SPA dist 回退；
+4. `client-modules`（[`packages/client/modules/src/index.ts`](../packages/client/modules/src/index.ts)）扫描浏览器插件，生成 `window.__DSH_BOOT__`；
 5. `boot()` 成功后 `appReady.commit()`，就绪信号才发出。
 
 ## 6. 失败与退出
@@ -94,4 +96,6 @@
 
 ## 相关
 
-- Cordis 官方 CLI 的 Loader/Include 最小链：[10-cordis-boot-loader.md](./10-cordis-boot-loader.md)。
+- Cordis 官方 CLI 的 Loader/Include 最小链：[zhp/10-cordis-boot-loader.md](./10-cordis-boot-loader.md)。
+- HTTP 载体深读：[zhp/26-typert.md](./26-typert.md)（webserver / frontend-static）；仓库地图 [zhp/08-repo-layout.md](./08-repo-layout.md)。
+- 链接写法：[zhp/05-workspace-conventions.md](./05-workspace-conventions.md)（标签用仓库根相对路径，避免 `index.ts:738` 被误解析）。
