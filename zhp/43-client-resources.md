@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`packages/client/resources/`](../packages/client/resources/README.zh.md)、[`workspace-files` client](../packages/api/workspace-files/src/client/)、[`ui-sidebar-documentpreview`](../packages/client/ui-sidebar-documentpreview/) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Slot [41b](./41b-web-client-slots.md)；插件加载 [42](./42-client-modules.md)；Gateway [40](./40-api-gateway.md)；Workspace 竖切 [41](./41-web-client.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Slot [41b](./41b-web-client-slots.md)；插件加载 [42](./42-client-modules.md)；Gateway [40](./40-api-gateway.md)；Workspace 竖切 [41](./41-web-client.md)；双面同库 [44](./44-host-client-dual-face.md)。
 
 ## 一句话
 

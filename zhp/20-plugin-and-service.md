@@ -7,7 +7,7 @@
 | 基线 | `zhp@6ad34ffb60` |
 | 证据 | [cordis-primer.zh.md](../docs/cordis-primer.zh.md)、[tutorial 01](../docs/cordis-tutorial/01-first-plugin.zh.md)、[tutorial 03](../docs/cordis-tutorial/03-services.zh.md)、[`service.ts`](../vendor/cordis/src/service.ts)；实例 [18](./18-jobs.md) |
 
-> Seam 边界见 [19](./19-seam-and-service.md)。Boot / Loader 见 [10](./10-cordis-boot-loader.md)。
+> Seam 边界见 [19](./19-seam-and-service.md)。Boot / Loader 见 [10](./10-cordis-boot-loader.md)。Host/Client 同 Cordis 哲学、双树双面见 [44](./44-host-client-dual-face.md)。
 
 ## 一句话
 

@@ -8,7 +8,7 @@
 | 证据 | 源码；Upgrade 背景为二手（RFC）；权威见 [`packages/api/gateway/`](../packages/api/gateway/README.zh.md)、[`docs/api-gateway.zh.md`](../docs/api-gateway.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Typert 生成对照 [26](./26-typert.md)；HTTP 载体对照 [38](./38-webserver.md)；Client HMR（另一条 SSE）对照 [39](./39-hmr.md)；Web Client / Workspace 竖切对照 [41](./41-web-client.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Typert 生成对照 [26](./26-typert.md)；HTTP 载体对照 [38](./38-webserver.md)；Client HMR（另一条 SSE）对照 [39](./39-hmr.md)；Web Client / Workspace 竖切对照 [41](./41-web-client.md)；双面同库设计对照 [44](./44-host-client-dual-face.md)。
 
 ## 一句话
 
