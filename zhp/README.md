@@ -57,6 +57,7 @@
 | [41-web-client.md](./41-web-client.md) | Web Client 组织 | 实体→Controller→client→ui；Workspace 竖切 |
 | [41b-web-client-slots.md](./41b-web-client-slots.md) | Slot + React | 账本/inject、Outlet、`#root` 外壳 |
 | [42-client-modules.md](./42-client-modules.md) | Client modules | 插件图、`/plugins`、惰性 CJS、chunk |
+| [43-client-resources.md](./43-client-resources.md) | Client resources | `dsh-resource://`、useResource、file 例 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -100,6 +101,7 @@
 想弄清 API Gateway / Remote 分派 / `/api/remote.mux` / HTTP Upgrade → `40`（Typert 对照 `26`，webserver 对照 `38`）。
 想弄清 Web Client 前后端分包 / Workspace 竖切 → `41`（Gateway 对照 `40`）；Slot / React / `#root` → `41b`。
 想弄清 client-modules / 浏览器插件图 / combo 与 chunk → `42`（HMR 对照 `39`，竖切对照 `41`）。
+想弄清 `dsh-resource://` / useResource / 文件预览 → `43`（Slot 对照 `41b`，modules 对照 `42`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

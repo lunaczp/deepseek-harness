@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`ui-slots`](../packages/client/ui-slots/README.zh.md)、[`ui-renderer`](../packages/client/ui-renderer/)、[slot Note](../.agents/notes/implemented/architecture/2026-07-22-slot-type-chain-implementation.zh.md)、[`docs/subsystems/web-client.zh.md`](../docs/subsystems/web-client.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。竖切组织 / Workspace [41](./41-web-client.md)；启动 [07](./07-startup.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。竖切组织 / Workspace [41](./41-web-client.md)；启动 [07](./07-startup.md)；slot 上的实时数据 [43](./43-client-resources.md)。
 
 ## 一句话
 

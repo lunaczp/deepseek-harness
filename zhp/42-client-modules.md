@@ -152,9 +152,9 @@ apps/web Vite          薄壳（main.ts、共享基座）
 
 ### 和相邻
 
-| | client-modules | client-hmr | ui-slots |
-|---|---|---|---|
-| 干什么 | 插件 bundle 图 + `/plugins` | 发现重建、SSE | UI 插槽账本 |
+| | client-modules | client-hmr | ui-slots | resources |
+|---|---|---|---|---|
+| 干什么 | 插件 bundle 图 + `/plugins` | 发现重建、SSE | UI 插槽账本 | `dsh-resource://` 值流 → [43](./43-client-resources.md) |
 
 ---
 

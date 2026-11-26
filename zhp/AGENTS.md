@@ -23,8 +23,8 @@
 
 ## 进度锚点
 
-- 已完成：`00`–`42`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`（见索引）。
-- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / Typert generate / 工具并行 / Linux scope。
+- 已完成：`00`–`43`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`（见索引）。
+- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / resource pin 时序 / Typert generate / 工具并行 / Linux scope。
 - 已知待修：`04` 的不变量措辞与状态行；`03` 的 `lsof` 结论（实测 `lsof -p` 可看到进程，只有 `ps` 被 setuid 检查拦住）。
 
 ## 环境事实
