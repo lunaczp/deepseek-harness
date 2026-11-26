@@ -8,7 +8,7 @@
 | 证据 | 源码；权威见 [`workspace`](../packages/workspace/workspace/README.zh.md)、[`workspace-controller`](../packages/api/workspace-controller/README.zh.md)、[`ui-workspace`](../packages/client/ui-workspace/README.zh.md)、[`docs/subsystems/web-client.zh.md`](../docs/subsystems/web-client.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**日志** = 系统/内核日志；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Slot / React 渲染续篇 [41b](./41b-web-client-slots.md)；插件如何进浏览器 [42](./42-client-modules.md)；Typert / Gateway [26](./26-typert.md) / [40](./40-api-gateway.md)；HTTP [38](./38-webserver.md)；双面同库设计对照 [44](./44-host-client-dual-face.md)；workspace 实体落盘对照 [45](./45-storage.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。Slot / React 渲染续篇 [41b](./41b-web-client-slots.md)；插件如何进浏览器 [42](./42-client-modules.md)；Typert / Gateway [26](./26-typert.md) / [40](./40-api-gateway.md)；HTTP [38](./38-webserver.md)；双面同库设计对照 [44](./44-host-client-dual-face.md)；Host 实体与落盘对照 [46](./46-workspace.md)／[45](./45-storage.md)。
 
 ## 一句话
 

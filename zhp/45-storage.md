@@ -144,13 +144,12 @@ enqueue → unit.put/delete → 改内存 → emit domain/changed
 
 ## 还没搞懂
 
-1. workspace「两次写 + 崩溃恢复」路径对照读。
-2. projection-cache `per-record` + `backup-and-skip` 与权威域策略对照。
-3. 七个拆 leaf 无关；本栈 Host-only——Client 如何经 Remote 看到 workspace 状态（已部分在 [41](./41-web-client.md)）。
+1. projection-cache `per-record` + `backup-and-skip` 与权威域策略对照。
+2. 七个拆 leaf 无关；本栈 Host-only——Client 经 Remote 见 workspace 见 [41](./41-web-client.md)；实体深读见 [46](./46-workspace.md)。
 
 ## 读代码最短路径
 
 1. [storage.zh.md](../docs/subsystems/storage.zh.md)
 2. Hub [`storage/src/index.ts`](../packages/storage/storage/src/index.ts) + [`backend.ts`](../packages/storage/storage/src/backend.ts)
 3. Domain [`storage-domain/src/index.ts`](../packages/storage/storage-domain/src/index.ts) + [`domain.ts`](../packages/storage/storage-domain/src/domain.ts)
-4. 消费方：[`workspace/src/spec.ts`](../packages/workspace/workspace/src/spec.ts) → `Service.init` open
+4. 消费方：[`workspace/src/spec.ts`](../packages/workspace/workspace/src/spec.ts) → `Service.init` open；实体深读 [46](./46-workspace.md)
