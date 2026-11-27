@@ -23,12 +23,41 @@
 | 下载例 | `https://download.deepseek.com/desktop/dsh-latest-macos-arm64.dmg` → `deepseek-harness-0.2.2-rc.5-mac-arm64.dmg`（**二手**，2026-11-27） | `deepseek-harness-<仓库版本>-mac-<arch>-unsigned.dmg` |
 | 签名／公证 | Developer ID + 公证 | Electron ad-hoc；**无公证** |
 | 自动更新 | 有 feed | 无；上传命令不会发这类产物 |
-| Computer Use helper | 正式签名包可带 | unsigned **不放入** |
+| Computer Use helper | 正式签名包可带 | unsigned **不放入**（见下节） |
 | 官网菜单 | 主推 **macOS（Apple 芯片）** + Windows；Intel 不在面板里 | 本仓仍保留 `mac-x64` 全套打包／上传目标 |
 
 **不是**「代码不兼容」或「electron-builder 打不出 x64」：`mac-x64` 与 `mac-arm64`、`win-x64` 同为一等目标（源码：`package-target.ts`、`primary-runtime/lock.json`、`macos-intel-package.yml`）。官网不列 Intel 更像分发选择；COS 上 `dsh-latest-macos-x64.dmg` 曾存在但停更更早（**二手**，last-modified 约 2026-10-17）。
 
 权威说明：`apps/desktop/packaging/README.zh.md` [§ 无发布签名的本地 macOS DMG](../apps/desktop/packaging/README.zh.md#local-macos-dmg-without-release-signing)。
+
+---
+
+## 1b. CUA helper missing in unsigned DMG
+
+**结论：helper 应用二进制根本没打进包，不是「有文件但没签名」。**（源码／实测）
+
+装包路径只认：
+
+```text
+…/app.asar.unpacked/…/@deepseek-ai/dsh-experimental-cua-macos/native/bin/darwin-<arch>/
+```
+
+其中应有已 stage 的 **signed／notarized** helper（`current.json` + `DSH Computer Use.app`）。`*:unsigned` 流程**故意不 stage**（packaging README：*These builds stage no Computer Use helper*）。运行时找不到 `current.json`（`ENOENT`）就报：
+
+> Computer use helper application is missing from …; this installation does not include the signed helper
+
+（源码：[`packages/experimental/cua-macos/src/native-build.ts`](../packages/experimental/cua-macos/src/native-build.ts)）
+
+本机实测（Intel unsigned 安装后）：插件列表里「电脑操作服务注册」「Computer Use 服务」可运行中，「macOS Computer Use 后端」异常，原因即上句；安装树内**无** `native/bin`。
+
+| 误解 | 实际 |
+|---|---|
+| helper 代码没写 | TS／Swift 源码在仓库；缺的是**装包内的 `.app` 产物** |
+| 有 helper 但没签名 | 目录都不存在；不是签名失败 |
+| 把 Dev.app 拷进 `/Applications` 就能修 unsigned DMG | 装包路径不认你手动塞的路径；正式包靠 `cua-helper/stage.ts` 写入上述 `native/bin` |
+| unsigned DMG 不能用别的方式测 CUA | 可改用**源码 web + 本机编 Dev helper**，见 [web-cua-helper.md](./web-cua-helper.md) |
+
+日常聊天／编码／插件等不受影响；只有 Computer Use 控电脑这条能力缺。要完整 CUA 的 Desktop 体验：官网正式包，或公司证书下的签名 Desktop 打包（先 `scripts/cua-helper/package.ts` + `stage.ts`）。
 
 ---
 
@@ -151,7 +180,8 @@ package:desktop:mac:x64:unsigned
 
 ## 读文档最短路径
 
-1. 本文（操作）
-2. [`apps/desktop/packaging/README.zh.md`](../apps/desktop/packaging/README.zh.md)（权威）
-3. [zhp/49-deliverables-and-release.md](../zhp/49-deliverables-and-release.md)（交付物总览）
-4. [`apps/desktop/README.zh.md`](../apps/desktop/README.zh.md)（Desktop 行为）
+1. 本文（unsigned DMG 操作）
+2. [web-cua-helper.md](./web-cua-helper.md)（源码 web 测 CUA，绕开 unsigned 限制）
+3. [`apps/desktop/packaging/README.zh.md`](../apps/desktop/packaging/README.zh.md)（权威）
+4. [zhp/49-deliverables-and-release.md](../zhp/49-deliverables-and-release.md)（交付物总览）
+5. [`apps/desktop/README.zh.md`](../apps/desktop/README.zh.md)（Desktop 行为）

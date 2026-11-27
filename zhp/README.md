@@ -71,7 +71,7 @@
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 | [../zhp-codex/](../zhp-codex/README.md) | 与 Codex 对照（独立目录） | 见 [dsh-vs-codex](../zhp-codex/dsh-vs-codex.md) |
 | [../zhp-claude/](../zhp-claude/README.md) | 与 Claude Code 对照（独立目录） | 见 [dsh-vs-claude-code](../zhp-claude/dsh-vs-claude-code.md) |
-| [../zhp-build/](../zhp-build/README.md) | 本机构建／打包（独立目录） | 见 [desktop-dmg-unsigned](../zhp-build/desktop-dmg-unsigned.md) |
+| [../zhp-build/](../zhp-build/README.md) | 本机构建／打包（独立目录） | [unsigned DMG](../zhp-build/desktop-dmg-unsigned.md)；[web + CUA helper](../zhp-build/web-cua-helper.md) |
 
 ## 阅读顺序建议
 
@@ -130,7 +130,7 @@
 想弄清「runtime／运行时」几种含义怎么区分 → `52`（架构对照 `01`，地图对照 `08`，交付对照 `49`）。
 想对照 OpenAI Codex 与本仓 harness 取向 → [zhp-codex/](../zhp-codex/README.md)（运行时用语对照 `52`）。
 想对照 Claude Code 与本仓 harness 取向 → [zhp-claude/](../zhp-claude/README.md)（与 Codex 三角见该篇 §6）。
-想本机打未签名 Desktop DMG → [zhp-build/](../zhp-build/README.md)。
+想本机打未签名 Desktop DMG → [zhp-build/desktop-dmg-unsigned](../zhp-build/desktop-dmg-unsigned.md)；源码 web 测 CUA helper → [zhp-build/web-cua-helper](../zhp-build/web-cua-helper.md)。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
