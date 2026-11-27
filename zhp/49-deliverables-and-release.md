@@ -8,7 +8,7 @@
 | 证据 | 文档与源码；权威见 [`docs/architecture.md`](../docs/architecture.md)、[`apps/cli`](../apps/cli/README.zh.md)、[`packages/bundle`](../packages/bundle/README.zh.md)、[npm 三序列 Note](../.agents/notes/implemented/process/2026-08-10-npm-release-sequences.zh.md)、[`apps/desktop/packaging`](../apps/desktop/packaging/README.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。仓库地图 [08](./08-repo-layout.md)；启动／profile [07](./07-startup.md)；Web／Desktop 壳 [38](./38-webserver.md)／[44](./44-host-client-dual-face.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。仓库地图 [08](./08-repo-layout.md)；启动／profile [07](./07-startup.md)；「运行时」用语 [52](./52-runtime.md)；Web／Desktop 壳 [38](./38-webserver.md)／[44](./44-host-client-dual-face.md)。
 
 ## 一句话
 

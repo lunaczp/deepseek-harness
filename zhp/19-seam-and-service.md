@@ -19,7 +19,7 @@
 
 | | Service | Seam（能力缝） |
 |---|---|---|
-| 层 | Cordis 运行时 | dsh 架构用语 |
+| 层 | Cordis 运行时（插件总线；用语见 [52](./52-runtime.md)） | dsh 架构用语 |
 | 定义 | `Service` 子类 `super(ctx, name)` → `ctx.reflect.provide` | *swappable capability* 三角色齐全 |
 | 别人怎么用 | `ctx.jobs` / `ctx.shell` … | 换 Provider、挂 Consumer，组合出完整能力 |
 | 单独一个角色？ | 可以只有一个 Service | **单角色 ≠ seam**（architecture 原文） |

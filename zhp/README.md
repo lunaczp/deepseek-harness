@@ -66,12 +66,14 @@
 | [49-deliverables-and-release.md](./49-deliverables-and-release.md) | 交付与发布 | 产品交付、独立程序／模块、npm／Desktop 打包 |
 | [50-cordis-events.md](./50-cordis-events.md) | Cordis 事件分发 | bail／serial 等同序停、同步 vs await；五种 mode |
 | [51-cordis-effect.md](./51-cordis-effect.md) | Cordis `ctx.effect` | Fiber `_disposables`、逆序清理、与 on／plugin 同源 |
+| [52-runtime.md](./52-runtime.md) | Runtime／运行时用语 | 产品进程 vs Plugin.Runtime vs seam vs prompt；跨框架对照 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
 
 想快速了解结论 → 读 `00`。
 想知道 agent 怎么运转 → `01` + `02`。
+想弄清「运行时」一词在本仓／他框架指什么 → `52`（先扫；细节链回各篇）。
 想知道 CLI 一次提问怎么跑 → `09`（对照 `07` 的 web 启动）。
 想弄清 Cordis / Loader 最小启动链 → `10`（再读 `07` 的 DSH 补丁栈）。
 想弄清 Cordis 事件分发 / bail·serial / waterfall → `50`（Loader 对照 `10`；审批／LLM waterfall 对照 `30`／`13`）。
@@ -120,6 +122,7 @@
 想弄清整仓交付物 / 独立程序与模块 / 发布打包 → `49`（仓库地图对照 `08`，启动对照 `07`）。
 想弄清 Cordis `emit`／`bail`／`serial`／`waterfall` → `50`（见上；Session 落盘事件仍看 `12`）。
 想弄清 `ctx.effect`／Fiber dispose／逆序 cleanup → `51`（见上）。
+想弄清「runtime／运行时」几种含义怎么区分 → `52`（架构对照 `01`，地图对照 `08`，交付对照 `49`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
