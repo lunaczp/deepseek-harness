@@ -8,7 +8,7 @@
 | 证据 | 源码 + 既有 zhp／docs 用语对照；跨框架行为为二手概括 |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。架构 [01](./01-architecture.md)；仓库地图 [08](./08-repo-layout.md)；交付 [49](./49-deliverables-and-release.md)；Cordis Fiber／Plugin.Runtime [10](./10-cordis-boot-loader.md)、[51](./51-cordis-effect.md)；PTC [24](./24-ptc.md)；提示词 runtime context [14](./14-prompt-assembly.md)；seam [19](./19-seam-and-service.md)。
+> **跳转**见 [05](./05-workspace-conventions.md)。架构 [01](./01-architecture.md)；仓库地图 [08](./08-repo-layout.md)；交付 [49](./49-deliverables-and-release.md)；与 Codex 产品运行时对照 [53](./53-dsh-vs-codex.md)；Cordis Fiber／Plugin.Runtime [10](./10-cordis-boot-loader.md)、[51](./51-cordis-effect.md)；PTC [24](./24-ptc.md)；提示词 runtime context [14](./14-prompt-assembly.md)；seam [19](./19-seam-and-service.md)。
 
 ## 一句话
 

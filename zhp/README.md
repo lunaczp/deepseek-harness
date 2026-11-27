@@ -67,6 +67,7 @@
 | [50-cordis-events.md](./50-cordis-events.md) | Cordis 事件分发 | bail／serial 等同序停、同步 vs await；五种 mode |
 | [51-cordis-effect.md](./51-cordis-effect.md) | Cordis `ctx.effect` | Fiber `_disposables`、逆序清理、与 on／plugin 同源 |
 | [52-runtime.md](./52-runtime.md) | Runtime／运行时用语 | 产品进程 vs Plugin.Runtime vs seam vs prompt；跨框架对照 |
+| [53-dsh-vs-codex.md](./53-dsh-vs-codex.md) | DSH vs Codex | Harness 对照：拼树 vs Rust 产品单体 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -123,6 +124,7 @@
 想弄清 Cordis `emit`／`bail`／`serial`／`waterfall` → `50`（见上；Session 落盘事件仍看 `12`）。
 想弄清 `ctx.effect`／Fiber dispose／逆序 cleanup → `51`（见上）。
 想弄清「runtime／运行时」几种含义怎么区分 → `52`（架构对照 `01`，地图对照 `08`，交付对照 `49`）。
+想对照 OpenAI Codex 与本仓 harness 取向 → `53`（运行时用语对照 `52`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
