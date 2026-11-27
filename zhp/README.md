@@ -63,6 +63,7 @@
 | [46-workspace.md](./46-workspace.md) | Workspace 实体 | 注册表、两次写恢复、会话归属、非破坏删除 |
 | [47-settings.md](./47-settings.md) | Settings 表单 | volatile Config、revision、脱敏、非 storage |
 | [48-credentials.md](./48-credentials.md) | Credentials | Ref／Key、local 分层、按操作 resolve、授权 flow |
+| [49-deliverables-and-release.md](./49-deliverables-and-release.md) | 交付与发布 | 产品交付、独立程序／模块、npm／Desktop 打包 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -112,6 +113,7 @@
 想弄清 Workspace 注册表 / bootstrap / 两次写恢复 / 会话归属 → `46`（Web 竖切对照 `41`，落盘对照 `45`，session 对照 `12`）。
 想弄清插件设置表单 / volatile / 脱敏 / 与 storage 边界 → `47`（Loader 对照 `10`，落盘对照 `45`，Remote 对照 `40`）。
 想弄清凭据引用 / 本机存储 / 按操作 resolve / 授权 flow → `48`（settings 对照 `47`，LLM 对照 `13`／`13b`）。
+想弄清整仓交付物 / 独立程序与模块 / 发布打包 → `49`（仓库地图对照 `08`，启动对照 `07`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
