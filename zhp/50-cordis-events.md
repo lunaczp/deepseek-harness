@@ -8,7 +8,7 @@
 | 证据 | 源码；对照 [`docs/cordis-tutorial/04-events.zh.md`](../docs/cordis-tutorial/04-events.zh.md)、[`docs/cordis-api/events.zh.md`](../docs/cordis-api/events.zh.md) |
 
 > 证据约定：**实测** = 本机跑过；**源码** = 读仓库确认；**二手** = 外部文档；**推断** = 尚未验证。
-> **跳转**见 [05](./05-workspace-conventions.md)。Loader／mixin 对照 [10](./10-cordis-boot-loader.md)；waterfall 实务对照 [30](./30-approval.md)、[13](./13-llm-implementation.md)；Session 日志事件对照 [12](./12-session-implementation.md)（那是落盘词汇，不是 Cordis 分发）。
+> **跳转**见 [05](./05-workspace-conventions.md)。Loader／mixin 对照 [10](./10-cordis-boot-loader.md)；`ctx.on` 的清理账对照 [51](./51-cordis-effect.md)；waterfall 实务对照 [30](./30-approval.md)、[13](./13-llm-implementation.md)；Session 日志事件对照 [12](./12-session-implementation.md)（那是落盘词汇，不是 Cordis 分发）。
 
 ## 一句话
 
@@ -28,7 +28,7 @@
 | `bail` | `ctx.bail(…)` | **同步按序**；第一个 bail 值停下并返回（serial 的同步版） |
 | `waterfall` | `ctx.waterfall(…)` / 常 `await` | 末参是 `next`；不调 `next()` 则短路整条链 |
 
-注册一律 `ctx.on` / `ctx.once`（[#L294](../vendor/cordis/src/events.ts#L294)）；分发模式是**发事件一方**选的，不是注册 API 的参数。
+注册一律 `ctx.on` / `ctx.once`（[#L294](../vendor/cordis/src/events.ts#L294)）；底层是 `fiber.effect`，Fiber unload 时自动撤监听（[51](./51-cordis-effect.md)）。分发模式是**发事件一方**选的，不是注册 API 的参数。
 
 ---
 
