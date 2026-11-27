@@ -11,7 +11,7 @@
 
 ## 一句话
 
-**不需要 Apple 证书也能打出本地 DMG；本机是 Intel 用 `mac-x64:unsigned`，Apple 芯片用 `mac-arm64:unsigned`。**（实测／源码）
+**不需要 Apple 证书也能打出本地 DMG；本机是 Intel 用** `mac-x64:unsigned`**，Apple 芯片用** `mac-arm64:unsigned`**。**（实测／源码）
 
 ---
 
@@ -28,7 +28,7 @@
 
 **不是**「代码不兼容」或「electron-builder 打不出 x64」：`mac-x64` 与 `mac-arm64`、`win-x64` 同为一等目标（源码：`package-target.ts`、`primary-runtime/lock.json`、`macos-intel-package.yml`）。官网不列 Intel 更像分发选择；COS 上 `dsh-latest-macos-x64.dmg` 曾存在但停更更早（**二手**，last-modified 约 2026-10-17）。
 
-权威说明：[`apps/desktop/packaging/README.zh.md` § 无发布签名的本地 macOS DMG](../apps/desktop/packaging/README.zh.md#local-macos-dmg-without-release-signing)。
+权威说明：`apps/desktop/packaging/README.zh.md` [§ 无发布签名的本地 macOS DMG](../apps/desktop/packaging/README.zh.md#local-macos-dmg-without-release-signing)。
 
 ---
 
