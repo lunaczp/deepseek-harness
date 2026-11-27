@@ -139,6 +139,8 @@ sequenceDiagram
 
 学 DSH 启动时：先建立本文的 Loader/Entry 心智，再叠 [07](./07-startup.md) 的补丁栈。
 
+事件分发（`emit`／`bail`／`serial`／`waterfall`）：[50-cordis-events.md](./50-cordis-events.md)。
+
 文件级对照与行数：[11-dsh-vs-cordis-boot-files.md](./11-dsh-vs-cordis-boot-files.md)。
 
 ## 还没搞懂

@@ -64,6 +64,7 @@
 | [47-settings.md](./47-settings.md) | Settings 表单 | volatile Config、revision、脱敏、非 storage |
 | [48-credentials.md](./48-credentials.md) | Credentials | Ref／Key、local 分层、按操作 resolve、授权 flow |
 | [49-deliverables-and-release.md](./49-deliverables-and-release.md) | 交付与发布 | 产品交付、独立程序／模块、npm／Desktop 打包 |
+| [50-cordis-events.md](./50-cordis-events.md) | Cordis 事件分发 | bail／serial 等同序停、同步 vs await；五种 mode |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 
 ## 阅读顺序建议
@@ -72,6 +73,7 @@
 想知道 agent 怎么运转 → `01` + `02`。
 想知道 CLI 一次提问怎么跑 → `09`（对照 `07` 的 web 启动）。
 想弄清 Cordis / Loader 最小启动链 → `10`（再读 `07` 的 DSH 补丁栈）。
+想弄清 Cordis 事件分发 / bail·serial / waterfall → `50`（Loader 对照 `10`；审批／LLM waterfall 对照 `30`／`13`）。
 想对照 DSH/Cordis 启动文件体量 → `11`。
 想弄清 Session 日志与一次问答落事件 → `12`（恢复语义对照 `06`）。
 想弄清模型调用与适配器 → `13`（对照 `02` 的⑤⑥与 `12` 的 request/assistant 事件）。
@@ -114,6 +116,7 @@
 想弄清插件设置表单 / volatile / 脱敏 / 与 storage 边界 → `47`（Loader 对照 `10`，落盘对照 `45`，Remote 对照 `40`）。
 想弄清凭据引用 / 本机存储 / 按操作 resolve / 授权 flow → `48`（settings 对照 `47`，LLM 对照 `13`／`13b`）。
 想弄清整仓交付物 / 独立程序与模块 / 发布打包 → `49`（仓库地图对照 `08`，启动对照 `07`）。
+想弄清 Cordis `emit`／`bail`／`serial`／`waterfall` → `50`（见上；Session 落盘事件仍看 `12`）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

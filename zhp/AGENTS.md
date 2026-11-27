@@ -23,8 +23,8 @@
 
 ## 进度锚点
 
-- 已完成：`00`–`49`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`（见索引）。
-- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / resource pin 时序 / Typert generate / 七个拆 leaf 包名单 / config-editor 与 settings 时序 / deepseek-account PlatformSession / publish set 名单 / 工具并行 / Linux scope。
+- 已完成：`00`–`50`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`（见索引）。
+- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / resource pin 时序 / Typert generate / 七个拆 leaf 包名单 / config-editor 与 settings 时序 / deepseek-account PlatformSession / publish set 名单 / 工具并行 / Linux scope；Cordis `_resolve`／filter／`internal/listener`（见 `50` 待办）。
 - 已知待修：`04` 的不变量措辞与状态行；`03` 的 `lsof` 结论（实测 `lsof -p` 可看到进程，只有 `ps` 被 setuid 检查拦住）。
 
 ## 环境事实
