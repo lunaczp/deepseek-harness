@@ -67,6 +67,7 @@
 | [50-cordis-events.md](./50-cordis-events.md) | Cordis 事件分发 | bail／serial 等同序停、同步 vs await；五种 mode |
 | [51-cordis-effect.md](./51-cordis-effect.md) | Cordis `ctx.effect` | Fiber `_disposables`、逆序清理、与 on／plugin 同源 |
 | [52-runtime.md](./52-runtime.md) | Runtime／运行时用语 | 产品进程 vs Plugin.Runtime vs seam vs prompt；跨框架对照 |
+| [53-harness-mental-model.md](./53-harness-mental-model.md) | 我的总结：骨／肉／人 | Cordis 骨、插件肉、profile 人；血／脊／缝 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 | [../zhp-codex/](../zhp-codex/README.md) | 与 Codex 对照（独立目录） | 见 [dsh-vs-codex](../zhp-codex/dsh-vs-codex.md) |
 | [../zhp-claude/](../zhp-claude/README.md) | 与 Claude Code 对照（独立目录） | 见 [dsh-vs-claude-code](../zhp-claude/dsh-vs-claude-code.md) |
@@ -74,6 +75,7 @@
 ## 阅读顺序建议
 
 想快速了解结论 → 读 `00`。
+想用「骨／肉／人」抓住整体设计 → `53`（再叠 `01`／`08`）。
 想知道 agent 怎么运转 → `01` + `02`。
 想弄清「运行时」一词在本仓／他框架指什么 → `52`（先扫；细节链回各篇）。
 想知道 CLI 一次提问怎么跑 → `09`（对照 `07` 的 web 启动）。

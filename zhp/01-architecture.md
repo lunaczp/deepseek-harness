@@ -6,6 +6,8 @@
 
 > 版本：`v0.2.2-rc.1`，master `fcc0ad4621`，370 个 workspace 包。
 
+> 组合／交付隐喻（骨／肉／人）：[53-harness-mental-model.md](./53-harness-mental-model.md)。
+
 ## 怎么读这张图
 
 **纵轴是依赖方向，不是调用顺序。** 上面依赖下面。
