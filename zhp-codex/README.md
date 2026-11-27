@@ -1,6 +1,6 @@
 # zhp-codex/
 
-对照 **OpenAI Codex**（`/Users/lux/Github/openai/codex`）与本仓 DeepSeek Harness 的学习笔记。与 [zhp/](../zhp/)（DSH 主线）分开，避免编号挤在同一索引里。
+对照 **OpenAI Codex**（`/Users/lux/Github/openai/codex`）与本仓 DeepSeek Harness 的学习笔记。与 [zhp/](../zhp/)（DSH 主线）、[zhp-claude/](../zhp-claude/) 分开，避免编号挤在同一索引里。
 
 | 文件 | 内容 |
 |---|---|

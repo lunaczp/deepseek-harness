@@ -69,6 +69,7 @@
 | [52-runtime.md](./52-runtime.md) | Runtime／运行时用语 | 产品进程 vs Plugin.Runtime vs seam vs prompt；跨框架对照 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 | [../zhp-codex/](../zhp-codex/README.md) | 与 Codex 对照（独立目录） | 见 [dsh-vs-codex](../zhp-codex/dsh-vs-codex.md) |
+| [../zhp-claude/](../zhp-claude/README.md) | 与 Claude Code 对照（独立目录） | 见 [dsh-vs-claude-code](../zhp-claude/dsh-vs-claude-code.md) |
 
 ## 阅读顺序建议
 
@@ -125,6 +126,7 @@
 想弄清 `ctx.effect`／Fiber dispose／逆序 cleanup → `51`（见上）。
 想弄清「runtime／运行时」几种含义怎么区分 → `52`（架构对照 `01`，地图对照 `08`，交付对照 `49`）。
 想对照 OpenAI Codex 与本仓 harness 取向 → [zhp-codex/](../zhp-codex/README.md)（运行时用语对照 `52`）。
+想对照 Claude Code 与本仓 harness 取向 → [zhp-claude/](../zhp-claude/README.md)（与 Codex 三角见该篇 §6）。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 

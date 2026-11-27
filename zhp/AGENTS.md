@@ -6,7 +6,7 @@
 ## 我们在做什么
 
 1. **主线：陪 lux 学习 dsh 源码。** 当前工作区就是 dsh 的源码仓库。学习笔记写进 `zhp/`，一个主题一篇。
-2. **对照 Codex：** 与 OpenAI Codex 的对照笔记写在独立目录 [zhp-codex/](../zhp-codex/README.md)，不占用 `zhp/` 编号。
+2. **对照他仓 harness：** Codex → [zhp-codex/](../zhp-codex/README.md)；Claude Code → [zhp-claude/](../zhp-claude/README.md)。均不占用 `zhp/` 编号。
 3. **暂缓：可自我修改的 agent。** 设计与约束见 [04-self-evolving-agent.md](./04-self-evolving-agent.md)，目前**不作为工作内容**——不推进设计、不改实现。实现位于 `packages/experimental/evolve/`，由另一个会话负责，不要改动。
 
 ## 怎么合作
@@ -24,8 +24,8 @@
 
 ## 进度锚点
 
-- 已完成：`00`–`52`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`（见索引）。与 Codex 对照在独立目录 [zhp-codex/](../zhp-codex/README.md)。
-- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / resource pin 时序 / Typert generate / 七个拆 leaf 包名单 / config-editor 与 settings 时序 / deepseek-account PlatformSession / publish set 名单 / 工具并行 / Linux scope；Cordis `_resolve`／filter／`internal/listener`（`50`）；`effectInertia`／epoch reload（`51`）；ScheduleRuntime 归类（`52`）；Codex hooks↔DSH waterfall、resume／PTC↔code-mode（[zhp-codex](../zhp-codex/)）。
+- 已完成：`00`–`52`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`（见索引）。对照目录：[zhp-codex/](../zhp-codex/README.md)、[zhp-claude/](../zhp-claude/README.md)。
+- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / resource pin 时序 / Typert generate / 七个拆 leaf 包名单 / config-editor 与 settings 时序 / deepseek-account PlatformSession / publish set 名单 / 工具并行 / Linux scope；Cordis `_resolve`／filter／`internal/listener`（`50`）；`effectInertia`／epoch reload（`51`）；ScheduleRuntime 归类（`52`）；Codex／Claude hooks↔DSH、resume／bridge／PTC（[zhp-codex](../zhp-codex/)、[zhp-claude](../zhp-claude/)）。
 - 已知待修：`04` 的不变量措辞与状态行；`03` 的 `lsof` 结论（实测 `lsof -p` 可看到进程，只有 `ps` 被 setuid 检查拦住）。
 
 ## 环境事实
