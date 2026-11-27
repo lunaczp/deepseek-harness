@@ -12,7 +12,7 @@
 ## 怎么合作
 
 - 中文交流。**解释优先于执行**——lux 在学，不是单纯要结果。
-- 编号连续：`zhp/NN-<topic>.md`；每新增一篇，同步更新 [README.md](./README.md) 索引。
+- 编号连续：`zhp/NN-<topic>.md`；每新增一篇，同步更新 [README.md](./README.md) 索引。总览级个人总结可用醒目号（当前 **`1000`**），不占用流水号。
 - 每篇固定头部：状态（学习中 / 草案 / 已核实 / 已实现）、日期与基线 commit、证据图例、一句话结论。
 - 证据五级：**实测 / 源码 / 日志 / 二手 / 推断**。推断不得写成观测；不确定就标出来。
 - 一个事实一个家：沙箱边界只写在 `03`，其他篇链接过去，不复制。
@@ -24,8 +24,8 @@
 
 ## 进度锚点
 
-- 已完成：`00`–`53`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`（见索引）。对照目录：[zhp-codex/](../zhp-codex/README.md)、[zhp-claude/](../zhp-claude/README.md)。
-- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / resource pin 时序 / Typert generate / 七个拆 leaf 包名单 / config-editor 与 settings 时序 / deepseek-account PlatformSession / publish set 名单 / 工具并行 / Linux scope；Cordis `_resolve`／filter／`internal/listener`（`50`）；`effectInertia`／epoch reload（`51`）；ScheduleRuntime 归类（`52`）；心智模型「脊／腺体」边界（`53`）；Codex／Claude hooks↔DSH、resume／bridge／PTC（[zhp-codex](../zhp-codex/)、[zhp-claude](../zhp-claude/)）。
+- 已完成：`00`–`52`、`13b`、`14b`、`15b`、`16b`、`17b`–`17e`、`41b`；总览总结 **`1000`**（见索引）。对照目录：[zhp-codex/](../zhp-codex/README.md)、[zhp-claude/](../zhp-claude/README.md)。
+- 下一步候选：本机实测 bash / jobs / fs / LSP / PTC / web / skill / workflow / subagent / approval / permission presets / sandbox / plan / goal / schedule / webserver index-inject / Host↔Client HMR 对照 / `$events` 抓包 / combo Network 对照 / resource pin 时序 / Typert generate / 七个拆 leaf 包名单 / config-editor 与 settings 时序 / deepseek-account PlatformSession / publish set 名单 / 工具并行 / Linux scope；Cordis `_resolve`／filter／`internal/listener`（`50`）；`effectInertia`／epoch reload（`51`）；ScheduleRuntime 归类（`52`）；心智模型「脊／腺体」边界（`1000`）；Codex／Claude hooks↔DSH、resume／bridge／PTC（[zhp-codex](../zhp-codex/)、[zhp-claude](../zhp-claude/)）。
 - 已知待修：`04` 的不变量措辞与状态行；`03` 的 `lsof` 结论（实测 `lsof -p` 可看到进程，只有 `ps` 被 setuid 检查拦住）。
 
 ## 环境事实

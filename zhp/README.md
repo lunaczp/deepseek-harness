@@ -5,6 +5,7 @@
 | 文件 | 内容 | 一句话 |
 |---|---|---|
 | [AGENTS.md](./AGENTS.md) | 协作约定 | 学习目标、合作方式、进度锚点（新会话先读） |
+| [1000-harness-mental-model.md](./1000-harness-mental-model.md) | **我的总结：骨／肉／人** | 整体设计心智（醒目号；Cordis 骨、插件肉、profile 人） |
 | [00-conclusions.md](./00-conclusions.md) | 结论摘要 | 六条要点，带证据强度标注 |
 | [01-architecture.md](./01-architecture.md) | 七层架构 | 从入口到状态层，纵轴是依赖方向 |
 | [02-request-lifecycle.md](./02-request-lifecycle.md) | 请求链路 | 一次提问到回复的九步，及"没有一次性的我" |
@@ -67,15 +68,14 @@
 | [50-cordis-events.md](./50-cordis-events.md) | Cordis 事件分发 | bail／serial 等同序停、同步 vs await；五种 mode |
 | [51-cordis-effect.md](./51-cordis-effect.md) | Cordis `ctx.effect` | Fiber `_disposables`、逆序清理、与 on／plugin 同源 |
 | [52-runtime.md](./52-runtime.md) | Runtime／运行时用语 | 产品进程 vs Plugin.Runtime vs seam vs prompt；跨框架对照 |
-| [53-harness-mental-model.md](./53-harness-mental-model.md) | 我的总结：骨／肉／人 | Cordis 骨、插件肉、profile 人；血／脊／缝 |
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 | [../zhp-codex/](../zhp-codex/README.md) | 与 Codex 对照（独立目录） | 见 [dsh-vs-codex](../zhp-codex/dsh-vs-codex.md) |
 | [../zhp-claude/](../zhp-claude/README.md) | 与 Claude Code 对照（独立目录） | 见 [dsh-vs-claude-code](../zhp-claude/dsh-vs-claude-code.md) |
 
 ## 阅读顺序建议
 
+想用「骨／肉／人」抓住整体设计 → **`1000`**（再叠 `01`／`08`）。
 想快速了解结论 → 读 `00`。
-想用「骨／肉／人」抓住整体设计 → `53`（再叠 `01`／`08`）。
 想知道 agent 怎么运转 → `01` + `02`。
 想弄清「运行时」一词在本仓／他框架指什么 → `52`（先扫；细节链回各篇）。
 想知道 CLI 一次提问怎么跑 → `09`（对照 `07` 的 web 启动）。
