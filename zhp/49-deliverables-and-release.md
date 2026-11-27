@@ -102,7 +102,7 @@
 | dsh | `pnpm run release:dsh` | `release.yml` → `release-publish.yml` | npm；`alpha`/`canary` 对应 dist-tag，`rc`→`next` |
 | vendor | `pnpm run release:vendor` | `release-vendor*.yml` | 9 个框架包 |
 | native | 自有 workflow | `node-addon-system-release.yml` | 平台原生包 |
-| Desktop | `pnpm run package:desktop:mac:arm64` 等 | 自托管 Actions + `upload:*` | DMG／Win + 更新 feed |
+| Desktop | `pnpm run package:desktop:mac:arm64` 等；本机未签名步骤见 [zhp-build](../zhp-build/desktop-dmg-unsigned.md) | 自托管 Actions + `upload:*` | DMG／Win + 更新 feed |
 | Python | `scripts/build-python-release.py` 等 | 见 `python/development` | wheel／runtime |
 
 要点（[Note](../.agents/notes/implemented/process/2026-08-10-npm-release-sequences.zh.md)）：

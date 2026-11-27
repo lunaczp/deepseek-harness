@@ -71,6 +71,7 @@
 | `assets/` | 图与生成脚本 | 两张 PNG + SVG 源 + Python 生成器 |
 | [../zhp-codex/](../zhp-codex/README.md) | 与 Codex 对照（独立目录） | 见 [dsh-vs-codex](../zhp-codex/dsh-vs-codex.md) |
 | [../zhp-claude/](../zhp-claude/README.md) | 与 Claude Code 对照（独立目录） | 见 [dsh-vs-claude-code](../zhp-claude/dsh-vs-claude-code.md) |
+| [../zhp-build/](../zhp-build/README.md) | 本机构建／打包（独立目录） | 见 [desktop-dmg-unsigned](../zhp-build/desktop-dmg-unsigned.md) |
 
 ## 阅读顺序建议
 
@@ -123,12 +124,13 @@
 想弄清 Workspace 注册表 / bootstrap / 两次写恢复 / 会话归属 → `46`（Web 竖切对照 `41`，落盘对照 `45`，session 对照 `12`）。
 想弄清插件设置表单 / volatile / 脱敏 / 与 storage 边界 → `47`（Loader 对照 `10`，落盘对照 `45`，Remote 对照 `40`）。
 想弄清凭据引用 / 本机存储 / 按操作 resolve / 授权 flow → `48`（settings 对照 `47`，LLM 对照 `13`／`13b`）。
-想弄清整仓交付物 / 独立程序与模块 / 发布打包 → `49`（仓库地图对照 `08`，启动对照 `07`）。
+想弄清整仓交付物 / 独立程序与模块 / 发布打包 → `49`（仓库地图对照 `08`，启动对照 `07`；本机 unsigned DMG 见 [zhp-build](../zhp-build/README.md)）。
 想弄清 Cordis `emit`／`bail`／`serial`／`waterfall` → `50`（见上；Session 落盘事件仍看 `12`）。
 想弄清 `ctx.effect`／Fiber dispose／逆序 cleanup → `51`（见上）。
 想弄清「runtime／运行时」几种含义怎么区分 → `52`（架构对照 `01`，地图对照 `08`，交付对照 `49`）。
 想对照 OpenAI Codex 与本仓 harness 取向 → [zhp-codex/](../zhp-codex/README.md)（运行时用语对照 `52`）。
 想对照 Claude Code 与本仓 harness 取向 → [zhp-claude/](../zhp-claude/README.md)（与 Codex 三角见该篇 §6）。
+想本机打未签名 Desktop DMG → [zhp-build/](../zhp-build/README.md)。
 想知道它能碰什么、不能碰什么 → `03`。
 想讨论自我迭代的可行性 → `04`。
 
