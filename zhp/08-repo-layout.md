@@ -68,12 +68,14 @@
 ```
 包（packages/*/*）            exported plugin / service
       ↓ 被 cordis.patch.yml 引用
-bundle（packages/bundle/*）   base / web-app / desktop / headless / sdk-app
-      ↓ profile 的 dsh.profile.bundles
-profile（~/.dsh/profiles/web） bundle 列表 + 用户 cordis.patch.yml
+bundle（packages/bundle/*）   base / web-app / headless / sdk-app / sdk-minimal / acp-app
+      ↓ profile 的 dsh.profile.bundles（模板在 PROFILE_TEMPLATES）
+profile（$DSH_HOME/profiles/<name>） 首次启动或 dsh plugin 时物化；非 npm 安装时拷贝
 ```
 
 一个包在运行时要出现，必须**某一行 patch 引用了它的包名**。目录存在不等于被加载。
+
+**Profile 澄清：** 随附模板是代码常量，不是仓库里预装的目录；用户机上的 `~/.dsh/profiles/web` 等在第一次用该名启动时由 [`initProfile`](../packages/boot/app-boot/src/profile.ts#L198) 写出。bundle **代码**仍在 dsh 安装目录，profile 只存 bundle **名单** + 用户 patch。细节见 [07](./07-startup.md#2-profile-在哪何时物化)。
 
 ## 4. 两个平面：源码 vs 产物
 
@@ -101,9 +103,9 @@ profile（~/.dsh/profiles/web） bundle 列表 + 用户 cordis.patch.yml
 
 ## 6. 三种"使用"
 
-1. **运行**：`apps/cli` 选 profile → bundle → 插件树。
+1. **运行**：`apps/cli` 选／物化 profile → 叠 bundle + patch → 插件树（[07](./07-startup.md)）。
 2. **开发**：改 `packages/*/*/src`，按 project references 编译；测试走 `pnpm run test`。
-3. **扩展**：新建包 → 写 README 与 `apply` → 在 bundle 里加一行 → 在 profile 里启用。
+3. **扩展**：新建包 → 写 README 与 `apply` → 在 bundle 里加一行 → 在 profile 的 `bundles`／patch 里启用。
 
 ## 还没搞懂
 

@@ -12,7 +12,7 @@
 | [04-self-evolving-agent.md](./04-self-evolving-agent.md) | 自改设计草案 | supervisor、事务式修改、评测外置 |
 | [05-workspace-conventions.md](./05-workspace-conventions.md) | 工作区约定 | 链接语法、沙箱事实、引用纪律 |
 | [06-session-and-resume.md](./06-session-and-resume.md) | 会话与恢复 | 补账而非续跑，turn 边界是安全重启点 |
-| [07-startup.md](./07-startup.md) | 启动流程 | 空根 + 补丁层，Loader 拼出插件树 |
+| [07-startup.md](./07-startup.md) | 启动流程 | profile 物化、空根 + 补丁层、Loader 拼树 |
 | [08-repo-layout.md](./08-repo-layout.md) | 仓库地图 | 包 → bundle → profile 三层组合 |
 | [09-cli-headless-flow.md](./09-cli-headless-flow.md) | CLI / headless | 一次 task 启动到 stdout，共享 agent-loop |
 | [10-cordis-boot-loader.md](./10-cordis-boot-loader.md) | Cordis 最小启动 | bin.js → Loader → Include → registry.plugin |

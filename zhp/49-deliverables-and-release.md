@@ -27,7 +27,9 @@
 | 文档站 | VitePress（`website/`） | `pnpm run website:build` |
 | 插件市场索引 | 发现页 `index.json` | `apps/plugin-market-generator` |
 
-随发行版 profile 模板：`web`、`headless`、`sdk`、`sdk-minimal`、`acp`；`desktop` 保留给 Electron，CLI 拒启动。
+随发行版 profile **模板名**：`web`、`headless`、`sdk`、`sdk-minimal`、`acp`（代码常量 [`PROFILE_TEMPLATES`](../packages/util/official-bundles/src/bundles.ts)）；`desktop` 保留给 Electron，CLI 拒启动。
+
+**Profile 不是 npm 安装产物：** 用户目录 `$DSH_HOME/profiles/<name>` 在首次 `dsh <名>` 或 `dsh plugin` 时物化；安装包只带运行时与 bundle 包。叠层生效见 [07](./07-startup.md#2-profile-在哪何时物化)。
 
 ---
 
